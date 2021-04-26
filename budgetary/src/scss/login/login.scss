@@ -13,9 +13,8 @@
   .logo-box {
     display: flex;
     position: relative;
-    top: 45%;
-    left: 20%;
-    transform: translateY(-50%);
+    top: 43%;
+    left: 13%;
   
     .logo-img-box {
       width: 15%;
@@ -43,17 +42,28 @@
 
 .login-container {
   position: relative;
-  
   background-color: $secondary-color;
   width: 40%;
   height: 100vh;
 
   .form-box {
+    position: relative;
+    top: 40%;
     margin: 0 auto;
     width: 400px;
     text-align: center;
 
     .login-form {
+      .input-box {
+        position: relative;
+        span {
+          position: absolute;
+          bottom: 20%;
+          left: 13%;
+          font-size: 2rem;
+        }
+      }
+
       input, a, button {
         display: block;
       }
@@ -68,8 +78,15 @@
         padding: 5px 10px;
         outline: none;
         background: transparent;
-        margin-bottom: 10px;
         width: 300px;
+      }
+
+      .username-input {
+        margin-bottom: 50px;
+      }
+
+      .forgot-password {
+        font-size: 0.75rem;
       }
 
       button {
@@ -77,9 +94,11 @@
         background-color: $primary-color;
         color: $white;
         width: 300px;
-        height: 40px;
+        height: 45px;
         border-radius: 5px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-top: 35px;
+        margin-bottom: 35px;
       }
     }
   }

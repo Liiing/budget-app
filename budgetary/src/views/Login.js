@@ -23,20 +23,20 @@ function Login() {
     <div className="login-container">
       <div className="form-box">
         <form className="login-form">
-          <div className="username-input-box">
-          <span class="material-icons">person</span>
+          <div className="input-box">
+            <span class="material-icons user-icon">person</span>
             <input className="username-input"></input>
           </div>
-          <div className="password-input-box">
-          <span class="material-icons">lock</span>
-             <input className="password-input"></input>
+          <div className="input-box">
+            <span class="material-icons lock-icon">lock</span>
+            <input className="password-input"></input>
           </div>
           <a className="forgot-password" >
             forgot password
           </a>
-          <button type="submit">Login</button>
+          <button type="submit">LOGIN</button>
           <a className="sign-up" >
-            Sign Up
+            SIGN UP
           </a>
         </form>
       </div>
