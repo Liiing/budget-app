@@ -1,0 +1,28 @@
+@import '../../scss/variables';
+
+
+.wrapper {
+  display: flex;
+}
+
+.logo-container {
+  background-color: $primary-color;
+  width: 60%;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: $secondary-color;
+  width: 40%;
+  height: 100vh;
+}
+
+.logo-box {
+  
+}
+
+.login-form { 
+  input, a, button {
+    display: block;
+  }
+}
