@@ -19,11 +19,18 @@ function Login() {
           </div>
         </div>
       </div>
+
     <div className="login-container">
       <div className="form-box">
         <form className="login-form">
-          <input className="username-input"></input>
-          <input className="password-input"></input>
+          <div className="username-input-box">
+          <span class="material-icons">person</span>
+            <input className="username-input"></input>
+          </div>
+          <div className="password-input-box">
+          <span class="material-icons">lock</span>
+             <input className="password-input"></input>
+          </div>
           <a className="forgot-password" >
             forgot password
           </a>

@@ -47,16 +47,43 @@
   background-color: $secondary-color;
   width: 40%;
   height: 100vh;
-  
-  .login-form { 
-    margin: 0 auto;
-    
-    input, a, button {
-      display: block;
-    }
 
-    
+  .form-box {
+    margin: 0 auto;
+    width: 400px;
+    text-align: center;
+
+    .login-form {
+      input, a, button {
+        display: block;
+      }
+
+      input, button{
+        margin: auto;
+      }
+      
+      input {
+        border: none;
+        border-bottom: 1px solid $white;
+        padding: 5px 10px;
+        outline: none;
+        background: transparent;
+        margin-bottom: 10px;
+        width: 300px;
+      }
+
+      button {
+        border: none;
+        background-color: $primary-color;
+        color: $white;
+        width: 300px;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 1.3rem;
+      }
+    }
   }
+  
 }
 
 
