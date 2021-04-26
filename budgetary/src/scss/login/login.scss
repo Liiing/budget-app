@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 
-
 .wrapper {
+  height: 100%;
   display: flex;
 }
 
@@ -9,20 +9,54 @@
   background-color: $primary-color;
   width: 60%;
   height: 100vh;
+  
+  .logo-box {
+    display: flex;
+    position: relative;
+    top: 45%;
+    left: 20%;
+    transform: translateY(-50%);
+  
+    .logo-img-box {
+      width: 15%;
+
+      .logo-svg {
+        width: 68%;
+      }
+    }
+    
+    .logo-text {
+      width: 85%;
+      .app-name {
+        font-size: 4rem;
+        font-weight: 300;
+        margin: 0;
+      }
+
+      .slogan-text {
+        font-size: 1.8rem;
+        font-weight: 300;
+      }
+    }
+  }
 }
 
 .login-container {
+  position: relative;
+  
   background-color: $secondary-color;
   width: 40%;
   height: 100vh;
-}
-
-.logo-box {
   
-}
+  .login-form { 
+    margin: 0 auto;
+    
+    input, a, button {
+      display: block;
+    }
 
-.login-form { 
-  input, a, button {
-    display: block;
+    
   }
 }
+
+
