@@ -1,7 +1,7 @@
-import '../scss/login/login.scss';
+import '../scss/dashboard/dashboard.scss';
 import logo from '../asset/images/piggy-bank-euro.svg';
 
-function Login() {
+function Dashboard() {
   return (
     <div className="wrapper">
       <div className="logo-container">
@@ -45,4 +45,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Dashboard;
