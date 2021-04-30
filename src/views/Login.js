@@ -29,15 +29,20 @@ function Login() {
           </div>
           <div className="input-box">
             <span class="material-icons lock-icon">lock</span>
-            <input className="password-input"></input>
+            <input className="password-input" type="password"></input>
           </div>
-          <a className="forgot-password" >
-            forgot password
-          </a>
+          <div className="forgot-password-container">
+            <a className="forgot-password">
+              forgot password
+            </a>
+          </div>
           <button type="submit">LOGIN</button>
-          <a className="sign-up" >
-            SIGN UP
-          </a>
+          <div className="sign-up-container">
+            <a className="sign-up" >
+              SIGN UP
+            </a>
+          </div>
+          
         </form>
       </div>
     </div>
