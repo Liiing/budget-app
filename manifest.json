@@ -1,0 +1,9 @@
+{
+  "short_name": "Budgetary",
+  "name": "Budgetary - Keep track of your Finances.",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
