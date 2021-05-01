@@ -25,11 +25,13 @@ function Login() {
         <form className="login-form">
           <div className="input-box">
             <span class="material-icons user-icon">person</span>
-            <input className="username-input"></input>
+            <input className="username-input" required/>
+            <span className="floating-label">email</span>
           </div>
           <div className="input-box">
             <span class="material-icons lock-icon">lock</span>
-            <input className="password-input" type="password"></input>
+            <input className="password-input" type="password" required/>
+            <span className="floating-label">password</span>
           </div>
           <div className="forgot-password-container">
             <a className="forgot-password">
@@ -38,7 +40,7 @@ function Login() {
           </div>
           <button type="submit">LOGIN</button>
           <div className="sign-up-container">
-            <a className="sign-up" >
+            <a className="sign-up">
               SIGN UP
             </a>
           </div>
