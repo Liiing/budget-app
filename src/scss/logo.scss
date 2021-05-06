@@ -1,0 +1,30 @@
+@import './variables';
+
+.logo-box {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  .logo-img-box {
+    width: 15%;
+
+    .logo-svg {
+      width: 68%;
+    }
+  }
+  
+  .logo-text {
+    width: 85%;
+    .app-name {
+      font-size: 4rem;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .slogan-text {
+      font-size: 1.8rem;
+      font-weight: 300;
+    }
+  }
+}

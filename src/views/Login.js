@@ -1,23 +1,20 @@
 import '../scss/login/login.scss';
 import logo from '../asset/images/piggy-bank-euro.svg';
+import Dashboard from './Dashboard.js';
+import Logo from '../components/logo.js';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function Login() {
   return (
     <div className="wrapper">
       <div className="logo-container">
-        <div className="logo-box">
-          <div className="logo-img-box">
-            <img className="logo-svg" src={logo} alt="piggy bank picture"/>
-          </div>
-          <div className="logo-text">
-            <h1 className="app-name">
-              Budgetary
-            </h1>
-            <h3 className="slogan-text">
-              Keep track of your Finances
-            </h3>
-          </div>
-        </div>
+        <Logo />
       </div>
 
     <div className="login-container">
@@ -38,13 +35,10 @@ function Login() {
               forgot password
             </a>
           </div>
-          <button type="submit">LOGIN</button>
-          <div className="sign-up-container">
-            <a className="sign-up">
-              SIGN UP
-            </a>
-          </div>
-          
+            <button type="submit"><Link to="/Dashboard">Login</Link></button>
+            <div className="sign-up-container">
+              <Link to="/Dashboard">SIGN UP</Link>
+            </div>
         </form>
       </div>
     </div>
