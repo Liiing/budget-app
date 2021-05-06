@@ -13,7 +13,6 @@
   @media ($down: $xl) {
     display: none;
   }
-
 }
 
 .login-container {
@@ -21,6 +20,10 @@
   background-color: $secondary-color;
   width: 40%;
   height: 100vh;
+
+  @media ($down: $sm) {
+    width: 100%;
+  }
 
   @media ($down: $xl) {
     width: 100%;
@@ -38,13 +41,52 @@
       text-align: center;
     }
 
-    .logo-svg {
+    @media ($down: $sm) {
+      top: 45px;
+    }
+
+    .logo-img-box {
+      position: relative;
+      display: block;
+      margin-right: 20px;
+
       @media ($down: $xl) {
-        width: 100px;
+        margin: auto 0;
+      }
+
+      @media ($down: $sm) {
+        margin: auto 0;
+      }
+
+      .logo-svg {
+        @media ($down: $xl) {
+          width: 100px;
+        }
+
+        @media ($down: $sm) {
+          width: 65px;
+        }
+      }
+    }
+
+    .logo-text {
+      width: 100%;
+
+      .app-name {
+        @media ($down: $sm) {
+          font-size: 2rem;
+          font-weight: 400;
+        }
+      }
+  
+      .slogan-text {
+        @media ($down: $sm) {
+          font-size: 1.1rem;
+          font-weight: 300;
+        }
       }
     }
   }
-  
 
   .form-box {
     position: relative;
@@ -56,6 +98,11 @@
 
     @media ($down: $xl) {
       top: 30%;
+      width: 70%;
+    }
+
+    @media ($down: $sm) {
+      top: 20%;
     }
 
     .login-form {
@@ -70,15 +117,19 @@
           position: absolute;
           left: 0;
           font-size: 2rem;
+          
+          @media ($down: $sm) {
+            font-size: 1.6rem;
+          }
         }
       }
 
       .user-icon {
-        bottom: 7%;
+        bottom: 8%;
       }
 
       .lock-icon {
-        bottom: 13%;
+        bottom: 15%;
       }
 
       input, a, button {
@@ -114,6 +165,11 @@
         color: #a3b2c7;
         font-size: 1.2rem;
         transition: transform 150ms ease-out, font-size 150ms ease-out;
+
+        @media ($down: $sm) {
+          top: 8px;
+          font-size: 1rem;
+        }
       }
 
       .username-input {
