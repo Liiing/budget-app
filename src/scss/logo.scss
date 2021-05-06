@@ -3,19 +3,22 @@
 .logo-box {
   display: flex;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 43%;
+  left: 13%;
 
   .logo-img-box {
-    width: 15%;
+    position: relative;
+    display: block;
+    margin-right: 20px;
 
     .logo-svg {
-      width: 68%;
+      width: 125px;
+      height: auto;
     }
   }
   
   .logo-text {
-    width: 85%;
+    width: 100%;
     .app-name {
       font-size: 4rem;
       font-weight: 300;

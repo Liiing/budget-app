@@ -19,7 +19,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
 	<Router>
 		<Switch>
-			<Route exact path="/" component={Login} />
+			<Route exact path="/budget-app" component={Login} />
         	<Route path="/Dashboard" component={Dashboard} />
 		</Switch>
 	</Router>,

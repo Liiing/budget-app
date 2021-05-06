@@ -18,6 +18,7 @@ function Login() {
       </div>
 
     <div className="login-container">
+      <Logo />
       <div className="form-box">
         <form className="login-form">
           <div className="input-box">

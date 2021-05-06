@@ -9,6 +9,11 @@
   background-color: $primary-color;
   width: 60%;
   height: 100vh;
+
+  @media ($down: $xl) {
+    display: none;
+  }
+
 }
 
 .login-container {
@@ -17,6 +22,30 @@
   width: 40%;
   height: 100vh;
 
+  @media ($down: $xl) {
+    width: 100%;
+  }
+
+  .logo-box {
+    display: none;
+
+    @media ($down: $xl) {
+      display: block;
+      max-width: 450px;
+      margin: 0 auto;
+      top: 100px;
+      left: 0;
+      text-align: center;
+    }
+
+    .logo-svg {
+      @media ($down: $xl) {
+        width: 100px;
+      }
+    }
+  }
+  
+
   .form-box {
     position: relative;
     display: block;
@@ -24,6 +53,10 @@
     margin: 0 auto;
     max-width: 350px;
     text-align: center;
+
+    @media ($down: $xl) {
+      top: 30%;
+    }
 
     .login-form {
       position: relative;
