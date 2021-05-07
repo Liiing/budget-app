@@ -21,17 +21,17 @@ const Signup = () => {
           <form className="signup-form">
             <div className="input-box">
               <span class="material-icons user-icon">person</span>
-              <input className="username-input" required/>
+              <input className="username-input" type="text" form="signup-form" onChange={({target: {value}}) => setEmail(value)}  required/>
               <span className="floating-label">email</span>
             </div>
             <div className="input-box">
               <span class="material-icons lock-icon">lock</span>
-              <input className="password-input" type="password" form="login-form" onChange={({target: {value}}) => setPasswordConfirmation(value)} required/>
+              <input className="password-input" type="password" form="signup-form" onChange={({target: {value}}) => setPassword(value)} required/>
               <span className="floating-label">password</span>
             </div>
             <div className="input-box">
               <span class="material-icons lock-icon">lock</span>
-              <input className="password-input" type="password" form="login-form" onChange={({target: {value}}) => setPasswordConfirmation(value)} required/>
+              <input className="password-input" type="password" form="signup-form" onChange={({target: {value}}) => setPasswordConfirmation(value)} required/>
               <span className="floating-label">confirm password</span>
             </div>
             <button type="submit"><Link to="/Dashboard">Sign Up</Link></button>
