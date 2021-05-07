@@ -6,6 +6,18 @@ function Dashboard() {
   return (
     <div className="wrapper">
       <Logo />
+      <div class="sidebar">
+      	<div class="container">
+      		<div class="menu-burger">
+      			<span></span>
+      			<span></span>
+      			<span></span>
+      		</div>
+      		<div class="settings">
+      			
+      		</div>
+      	</div>
+      </div>
     </div>
   );
 }
