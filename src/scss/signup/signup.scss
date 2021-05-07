@@ -111,73 +111,17 @@
       position: relative;
       display: block;
 
-      .input-box {
-        position: relative;
-        width: 100%;
+      .input-box{  
         margin-top: 90px;
         &:first-of-type{
           margin-top: 0;
         }
-        
-        .lock-icon, .user-icon {
-          position: absolute;
-          left: 0;
-          font-size: 2rem;
-          
-          @media ($down: $sm) {
-            font-size: 1.6rem;
-          }
-        }
       }
 
-      .user-icon {
-        bottom: 8%;
-      }
-
-      .lock-icon {
-        bottom: 15%;
-      }
-
-      input, a, button {
+      a, button {
         display: block;
       }
       
-      input {
-        border: none;
-        border-bottom: 1px solid $white;
-        padding: 5px 10px;
-        outline: none;
-        background: transparent;
-        padding-left: 40px;
-        color: white;
-        font-size: 1.1rem;
-        font-weight: 100;
-        width: 100%;        
-      }
-
-      input:focus ~ .floating-label,
-      input:not(:focus):valid ~ .floating-label{
-        top: -30px;
-        left: 15px;
-        font-size: 0.9rem;
-        opacity: 1;
-      }
-      
-      .floating-label {
-        position: absolute;
-        pointer-events: none;
-        left: 40px;
-        top: 2px;
-        color: #a3b2c7;
-        font-size: 1.2rem;
-        transition: transform 150ms ease-out, font-size 150ms ease-out;
-
-        @media ($down: $sm) {
-          top: 8px;
-          font-size: 1rem;
-        }
-      }
-
       .login {
         display: inline-block;
       }
@@ -191,7 +135,7 @@
         height: 45px;
         border-radius: 5px;
         font-size: 1.2rem;
-        margin-top: 35px;
+        margin-top: 55px;
         margin-bottom: 35px;
       }
     }
