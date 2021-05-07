@@ -2,6 +2,7 @@ import '../scss/login/login.scss';
 import logo from '../asset/images/piggy-bank-euro.svg';
 import Dashboard from './Dashboard.js';
 import Logo from '../components/logo.js';
+import AuthenticationInput from '../components/AuthenticationInput';
 
 import {
   BrowserRouter as Router,
@@ -21,16 +22,9 @@ function Login() {
       <Logo />
       <div className="form-box">
         <form className="login-form">
-          <div className="input-box">
-            <span class="material-icons user-icon">person</span>
-            <input className="username-input" required/>
-            <span className="floating-label">email</span>
-          </div>
-          <div className="input-box">
-            <span class="material-icons lock-icon">lock</span>
-            <input className="password-input" type="password" required/>
-            <span className="floating-label">password</span>
-          </div>
+          <AuthenticationInput form="login-form" label="email"/>
+          <AuthenticationInput form="login-form" label="password" isPassword/>
+
           <div className="forgot-password-container">
             <a className="forgot-password">
               forgot password

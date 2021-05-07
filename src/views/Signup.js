@@ -2,6 +2,7 @@ import '../scss/signup/signup.scss';
 import Logo from '../components/logo';
 import React, {useState} from 'react';
 import validatePassword from '../validation/passwordValidation';
+import AuthenticationInput from '../components/AuthenticationInput';
 import {Link} from 'react-router-dom';
 
 const Signup = () => {
@@ -19,21 +20,10 @@ const Signup = () => {
         <Logo />
         <div className="form-box">
           <form className="signup-form">
-            <div className="input-box">
-              <span class="material-icons user-icon">person</span>
-              <input className="username-input" type="text" form="signup-form" onChange={({target: {value}}) => setEmail(value)}  required/>
-              <span className="floating-label">email</span>
-            </div>
-            <div className="input-box">
-              <span class="material-icons lock-icon">lock</span>
-              <input className="password-input" type="password" form="signup-form" onChange={({target: {value}}) => setPassword(value)} required/>
-              <span className="floating-label">password</span>
-            </div>
-            <div className="input-box">
-              <span class="material-icons lock-icon">lock</span>
-              <input className="password-input" type="password" form="signup-form" onChange={({target: {value}}) => setPasswordConfirmation(value)} required/>
-              <span className="floating-label">confirm password</span>
-            </div>
+            <AuthenticationInput form="signup-form" label="email" onChange={({target: {value}}) => setEmail(value)}/>
+            <AuthenticationInput form="signup-form" label="password" onChange={({target: {value}}) => setPassword(value)} isPassword/>
+            <AuthenticationInput form="signup-form" label="confirm password" onChange={({target: {value}}) => setPasswordConfirmation(value)} isPassword/>
+
             <button type="submit"><Link to="/Dashboard">Sign Up</Link></button>
             <div className="sign-up-container">
               <Link to="/budget-app">Login</Link>
