@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Login from './views/Login.js';
 import Dashboard from './views/Dashboard.js';
-import reportWebVitals from './reportWebVitals';
+import Signup from './views/Signup';
 
 import {
   BrowserRouter as Router,
@@ -20,6 +20,7 @@ ReactDOM.render(
 	<Router>
 		<Switch>
 			<Route exact path="/budget-app" component={Login} />
+			<Route exact path="/signup" component={Signup} />
         	<Route path="/Dashboard" component={Dashboard} />
 		</Switch>
 	</Router>,

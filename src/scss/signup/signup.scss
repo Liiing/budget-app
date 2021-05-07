@@ -1,0 +1,200 @@
+@import '../../scss/variables';
+
+.wrapper {
+  height: 100%;
+  display: flex;
+}
+
+.logo-container {
+  background-color: $primary-color;
+  width: 60%;
+  height: 100vh;
+
+  @media ($down: $xl) {
+    display: none;
+  }
+}
+
+.signup-container {
+  position: relative;
+  background-color: $secondary-color;
+  width: 40%;
+  min-width: 270px;
+  height: 100vh;
+  justify-items: center;
+
+  @media ($down: $sm) {
+    width: 100%;
+  }
+
+  @media ($down: $xl) {
+    width: 100%;
+  }
+
+  .logo-box {
+    display: none;
+
+    @media ($down: $xl) {
+      display: block;
+      max-width: 450px;
+      margin: 0 auto;
+      top: 100px;
+      left: 0;
+      text-align: center;
+    }
+
+    @media ($down: $sm) {
+      top: 45px;
+    }
+
+    .logo-img-box {
+      position: relative;
+      display: block;
+      margin-right: 20px;
+
+      @media ($down: $xl) {
+        margin: auto 0;
+      }
+
+      @media ($down: $sm) {
+        margin: auto 0;
+      }
+
+      .logo-svg {
+        @media ($down: $xl) {
+          width: 100px;
+        }
+
+        @media ($down: $sm) {
+          width: 65px;
+        }
+      }
+    }
+
+    .logo-text {
+      width: 100%;
+
+      .app-name {
+        @media ($down: $sm) {
+          font-size: 2rem;
+          font-weight: 400;
+        }
+      }
+  
+      .slogan-text {
+        @media ($down: $sm) {
+          font-size: 1.1rem;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  .form-box {
+    position: relative;
+    display: block;
+    top: 40%;
+    margin: 0 auto;
+    max-width: 350px;
+    text-align: center;
+
+    @media ($down: $xl) {
+      top: 30%;
+      width: 70%;
+    }
+
+    @media ($down: $sm) {
+      top: 20%;
+    }
+
+    .signup-form {
+      position: relative;
+      display: block;
+
+      .input-box {
+        position: relative;
+        width: 100%;
+        margin-top: 90px;
+        &:first-of-type{
+          margin-top: 0;
+        }
+        
+        .lock-icon, .user-icon {
+          position: absolute;
+          left: 0;
+          font-size: 2rem;
+          
+          @media ($down: $sm) {
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+      .user-icon {
+        bottom: 8%;
+      }
+
+      .lock-icon {
+        bottom: 15%;
+      }
+
+      input, a, button {
+        display: block;
+      }
+      
+      input {
+        border: none;
+        border-bottom: 1px solid $white;
+        padding: 5px 10px;
+        outline: none;
+        background: transparent;
+        padding-left: 40px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 100;
+        width: 100%;        
+      }
+
+      input:focus ~ .floating-label,
+      input:not(:focus):valid ~ .floating-label{
+        top: -30px;
+        left: 15px;
+        font-size: 0.9rem;
+        opacity: 1;
+      }
+      
+      .floating-label {
+        position: absolute;
+        pointer-events: none;
+        left: 40px;
+        top: 2px;
+        color: #a3b2c7;
+        font-size: 1.2rem;
+        transition: transform 150ms ease-out, font-size 150ms ease-out;
+
+        @media ($down: $sm) {
+          top: 8px;
+          font-size: 1rem;
+        }
+      }
+
+      .login {
+        display: inline-block;
+      }
+      
+
+      button {
+        border: none;
+        background-color: $primary-color;
+        color: $white;
+        width: 100%;
+        height: 45px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        margin-top: 35px;
+        margin-bottom: 35px;
+      }
+    }
+  }
+  
+}
