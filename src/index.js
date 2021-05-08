@@ -1,28 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import Login from './views/Login.js';
 import Dashboard from './views/Dashboard.js';
 import Signup from './views/Signup';
+import './index.scss';
+import { AuthProvider } from './AuthContext';
+import PrivateRoute from './PrivateRoute';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Redirect
 } from "react-router-dom";
-
-import './index.scss';
 
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
 	<Router>
-		<Switch>
-			<Route exact path="/budget-app" component={Login} />
-			<Route exact path="/signup" component={Signup} />
-        	<Route path="/Dashboard" component={Dashboard} />
-		</Switch>
+		<AuthProvider>
+			<Switch>
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/signup" component={Signup} />
+				<PrivateRoute path="/dashboard" component={Dashboard} />
+				<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
+			</Switch>
+		</AuthProvider>
 	</Router>,
 	rootElement
 );

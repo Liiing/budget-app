@@ -1,3 +1,7 @@
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/analytics"
+
 var firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
 	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -8,14 +12,10 @@ var firebaseConfig = {
 	appId: process.env.REACT_APP_APP_ID,
 	measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 
-//firebase.js
-import firebase from "firebase/app"
-
-// ...
-
+export const auth = firebase.auth();
 export default firebase
