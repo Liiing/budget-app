@@ -7,6 +7,10 @@ html {
 	color: $white;
 }
 
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -22,11 +26,8 @@ body {
 
 * {
 	box-sizing: border-box;
-}
-
-div {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 code {
