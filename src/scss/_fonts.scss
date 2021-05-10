@@ -8,6 +8,7 @@ a {
 	text-decoration: none;
 	color: $white;
 	transition: 0.3s ease;
+  cursor: pointer;
 
 	&:hover {
 		color: darken($white, 30px);

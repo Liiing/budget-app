@@ -17,7 +17,7 @@ import {
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-	<Router>
+	<Router basename="/budget-app">
 		<AuthProvider>
 			<Switch>
 				<Route exact path="/login" component={Login} />

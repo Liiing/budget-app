@@ -62,6 +62,11 @@
 	&.active {
 		max-width: 200px;
 
+		.container {
+			margin-left: auto;
+			max-width: 50%;
+		}
+
 		.menu-burger {
 			span {
 				background-color: green;
@@ -85,6 +90,7 @@
 		width: 100%;
 		display: block;
 		position: relative;
+		transition: margin-left 0.3s ease;
 	}
 
 	.menu-burger {

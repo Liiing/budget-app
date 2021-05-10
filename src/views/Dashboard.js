@@ -11,7 +11,7 @@ function Dashboard() {
 
   return (
   	<div class="dashboard">
-		  <div className={`sidebar ${isActive ? "active" : "closed"}`}>
+		  <div className={`sidebar ${isActive ? "closed" : "active"}`}>
 		  	<div className="container">
 		  		<div className="menu-burger" onClick={handleToggle}>
 		  			<span></span>

@@ -3,14 +3,14 @@ import "firebase/auth"
 import "firebase/analytics"
 
 var firebaseConfig = {
-	apiKey: process.env.REACT_APP_API_KEY,
-	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-	databaseURL: process.env.REACT_APP_DATABASE_URL,
-	projectId: process.env.REACT_APP_PROJECT_ID,
-	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-	appId: process.env.REACT_APP_APP_ID,
-	measurementId: process.env.REACT_APP_MEASUREMENT_ID
+	apiKey: "AIzaSyDFfBHJPnormfyFlRSbdM360FsUWgbKt3Y",
+	authDomain: "btary-app.firebaseapp.com",
+	databaseURL: "https://xxxXXXX.firebaseio.com",
+	projectId: "btary-app",
+	storageBucket: "btary-app.appspot.com",
+	messagingSenderId: "898811137304",
+	appId: "1:898811137304:web:abcfec0e9fe36676e7e26d",
+	measurementId: "G-FHSCTD4XJ8",
 };
 
 firebase.initializeApp(firebaseConfig);
