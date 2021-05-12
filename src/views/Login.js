@@ -1,5 +1,4 @@
 import '../scss/login/login.scss';
-import logo from '../asset/images/piggy-bank-euro.svg';
 import Dashboard from './Dashboard.js';
 import Logo from '../components/logo.js';
 import AuthenticationInput from '../components/AuthenticationInput';
@@ -37,8 +36,8 @@ function Login() {
         <Logo />
         <div className="form-box">
           <form className="login-form" onSubmit={handleSubmit}>
-            <AuthenticationInput form="login-form" label="email" onChange={({target: {value}}) => setEmail(value)}/>
-            <AuthenticationInput form="login-form" label="password"  onChange={({target: {value}}) => setPassword(value)} isPassword/>
+            <AuthenticationInput type="email" form="login-form" label="email" onChange={({target: {value}}) => setEmail(value)}/>
+            <AuthenticationInput type="password" form="login-form" label="password"  onChange={({target: {value}}) => setPassword(value)}/>
 
             <div className="forgot-password-container">
               <a className="forgot-password">

@@ -5,7 +5,7 @@ function Logo() {
   return (
     <div className="logo-box">
 	  <div className="logo-img-box">
-	    <img className="logo-svg" src={logo} alt="piggy bank picture"/>
+	    <img className="logo-svg" src={logo} alt="piggy bank"/>
 	  </div>
 	  <div className="logo-text">
 	    <h1 className="app-name">
