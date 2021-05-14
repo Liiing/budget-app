@@ -51,7 +51,7 @@
 		top: 2px;
 		color: #a3b2c7;
 		font-size: 1.2rem;
-		transition: transform 150ms ease-out, font-size 150ms ease-out;
+		transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
 
 		@media ($down: $sm) {
 			top: 8px;

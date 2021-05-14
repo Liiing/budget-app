@@ -69,7 +69,19 @@
 
 		.menu-burger {
 			span {
-				background-color: green;
+				transition: transform 0.2s ease, opacity 0.3s ease, top 0.3s ease;
+
+				&:nth-child(1) {
+					transform:translate3d(-50%, 10px, 0) rotate(45deg);
+				}
+				&:nth-child(2) {
+					transform:translate3d(-50%, 0px, 0) rotate(-45deg);
+				}
+
+				&:nth-child(3) {
+					top: 5px;
+					opacity: 0;
+				}
 			}
 		}
 	}
@@ -88,6 +100,7 @@
 
 	.container {
 		width: 100%;
+		height: 100%;
 		display: block;
 		position: relative;
 		transition: margin-left 0.3s ease;

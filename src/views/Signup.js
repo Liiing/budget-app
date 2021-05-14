@@ -28,7 +28,7 @@ const Signup = () => {
         await signup(email,password)
         history.push("/")
       } catch {
-        console.log("AccountCreation failed")
+        alert("AccountCreation failed")
       }
       setLoading(false)
     }
@@ -60,7 +60,7 @@ const Signup = () => {
 
             <input className="signup-button" type="submit" value="Sign Up" disabled={loading}/>
             <div className="sign-up-container">
-              <Link to="/budget-app">Login</Link>
+              <Link to="/budget-app/login">Login</Link>
             </div>
           </form>
         </div>

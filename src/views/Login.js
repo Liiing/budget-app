@@ -21,7 +21,7 @@ function Login() {
       await login(email,password)
       history.push("/")
     } catch {
-      console.log("Login failed")
+      alert("Login failed")
     }
     setLoading(false)
   }

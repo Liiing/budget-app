@@ -141,6 +141,14 @@
         font-size: 1.2rem;
         margin-top: 35px;
         margin-bottom: 35px;
+        transition: 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: lighten(rgba(255, 255, 255, 0.695), 40px);
+          color: $white;
+          box-shadow: inset 0px 0px 0px 2px $black;
+        }
       }
     }
   }
