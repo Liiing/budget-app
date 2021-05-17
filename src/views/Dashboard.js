@@ -1,4 +1,5 @@
 import '../scss/dashboard/dashboard.scss';
+import '../scss/dashboard/dashboard-views.scss';
 import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
