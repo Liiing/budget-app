@@ -14,6 +14,10 @@ import {
   Redirect
 } from "react-router-dom";
 
+// Frontend real vh 
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(

@@ -50,7 +50,8 @@
 	&.mobile-dash {
 		@media ($down: $md) {
 			height: 100vh;
-			
+  			height: calc(var(--vh, 1vh) * 100);
+
 			.logout {
 				display: none;
 			}
@@ -166,6 +167,7 @@
 			width: 100%;
 			right: 0;
 			height: 100vh;
+  			height: calc(var(--vh, 1vh) * 100);
 			top: 0;
 			transition: all 0.3s ease;
 
