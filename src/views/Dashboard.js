@@ -2,6 +2,7 @@ import '../scss/dashboard/dashboard.scss';
 import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
+import Logout from '../components/Logout.js';
 
 function Dashboard() {
 	const [isActive, setActive] = useState("false");
@@ -22,6 +23,7 @@ function Dashboard() {
 		  		<Settings />
 		  	</div>
 		  </div>
+      <Logout />
 		  <div className="main-section">
 		  	<Logo />
 		  	<div className="main-dashboard">
