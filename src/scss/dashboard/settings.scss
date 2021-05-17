@@ -10,6 +10,10 @@
    height: 55px;
    cursor: pointer;
 
+   @media ($down: $md) {
+      display: none;
+   }
+
    &::before {
       content: '';
       position: relative;

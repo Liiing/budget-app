@@ -12,28 +12,28 @@ function Dashboard() {
   };
 
   return (
-  	<div className="dashboard">
-		  <div className={`sidebar ${isActive ? "closed" : "active"}`}>
-		  	<div className="container">
-		  		<div className="menu-burger" onClick={handleToggle}>
-		  			<span></span>
-		  			<span></span>
-		  			<span></span>
-		  		</div>
-		  		<Settings />
-		  	</div>
-		  </div>
-      <Logout />
-		  <div className="main-section">
-		  	<Logo />
-		  	<div className="main-dashboard">
-		  		<div className="budget-component-here"><h1>Budget</h1></div>
-		  		<div className="expense-component">
-	  				<h2>test</h2>
-		  		</div>
-		  	</div>
-		  </div>
+	<div className={`dashboard mobile-dash ${isActive ? "closed" : "active"}`}>
+		<div className={`sidebar mobile ${isActive ? "closed" : "active"}`}>
+		<div className="container">
+			<div className="menu-burger" onClick={handleToggle}>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<Settings />
 		</div>
+		</div>
+	<Logout />
+		<div className="main-section">
+		<Logo />
+		<div className="main-dashboard">
+			<div className="budget-component-here"><h1>Budget</h1></div>
+			<div className="expense-component">
+				<h2>test</h2>
+			</div>
+		</div>
+		</div>
+	</div>
   );
 }
 
