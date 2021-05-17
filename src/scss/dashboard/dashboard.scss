@@ -49,6 +49,8 @@
 
 	&.mobile-dash {
 		@media ($down: $md) {
+			height: 100vh;
+			
 			.logout {
 				display: none;
 			}
@@ -163,7 +165,7 @@
 			position: absolute;
 			width: 100%;
 			right: 0;
-			height: 100%;
+			height: 100vh;
 			top: 0;
 			transition: all 0.3s ease;
 
