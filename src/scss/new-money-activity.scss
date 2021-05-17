@@ -1,0 +1,53 @@
+@import '../scss/variables';
+
+
+.new-money-activity-container {
+  background-color: $primary-color;
+  width: 250px;
+  height: 200px;
+  
+  .text-input-box {
+    div {
+      position: relative;
+      input {
+        display: block;
+        border: none;
+        border-bottom: 1px solid #e4e4e4;
+        outline: none;
+        background: transparent;
+        color: $white;
+        outline: none;;
+        font-size: 1rem;
+        font-weight: 100;
+        width: 100%;
+        margin-top: 30px;        
+      }
+
+      input:focus ~ .floating-label,
+      input:not(:focus):valid ~ .floating-label{
+        bottom: 10px;
+        left: 0px;
+        font-size: 0.8rem;
+        opacity: 1;
+      }  
+        
+      .floating-label {
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        bottom: 0px;
+        color: #a3b2c7;
+        font-size: 1rem;
+        transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
+      } 
+    }
+  }
+
+  .checkbox {
+    display: block;
+    margin: 0;
+  }
+
+
+}
+
