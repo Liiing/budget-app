@@ -1,0 +1,50 @@
+@import '../variables';
+
+.dashboard {
+   .dashboard-views {
+      position: relative;
+      display: block;
+      width: 100%;
+      top: 40%;
+      transform: translateY(-40%);
+      text-align: center;
+
+      a {
+         display: block;
+         width: 50px;
+         height: 50px;
+         margin: 0 auto;
+         position: relative;
+
+         &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            transition: all 0.3s ease;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            width: 70%;
+            height: 70%;
+            background-color: darken($primary-color, 30px);
+         }
+
+         &:hover {
+            color: darken($grey, 40px);
+            &::before {
+               background-color: lighten($primary-color, 30px);
+            }
+         }
+
+         &.active {
+            &:hover {
+               color: $white;
+            }
+            &::before {
+               background-color: lighten($primary-color, 15px);
+            }
+         }
+      }
+   }
+}

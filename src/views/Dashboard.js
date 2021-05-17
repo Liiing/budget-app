@@ -5,6 +5,9 @@ import React, { useState } from "react";
 import Logout from '../components/Logout.js';
 import Budget from '../components/budget';
 import NewMoneyActivity from '../components/new-money-activity';
+import Savings from '../views/Savings.js';
+import { Link, useHistory } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 function Dashboard() {
 	const [isActive, setActive] = useState("false");
@@ -22,6 +25,10 @@ function Dashboard() {
           <span></span>
           <span></span>
         </div>
+		  <div className="dashboard-views">
+				<NavLink activeClassName="active" to="/dashboard">D</NavLink>
+				<NavLink activeClassName="active" to="/savings">S</NavLink>
+			</div>
         <Settings />
       </div>
 		</div>
