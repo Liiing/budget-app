@@ -223,6 +223,10 @@
 		padding: 15px 20px;
 		border-radius: 15px;
 
+    .budget-and-new-money-activity-container {
+      display: flex;
+    }
+
 		@media ($down: $md) {
 			width: 97%;
 			height: 800px;

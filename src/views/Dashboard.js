@@ -37,8 +37,10 @@ function Dashboard() {
 		<div className="main-section">
 		  <Logo />
       <div className="main-dashboard">
-        <Budget />
-        <NewMoneyActivity />
+        <div className="budget-and-new-money-activity-container">
+          <Budget />
+          <NewMoneyActivity />
+        </div>
         <h2>test</h2>
       </div>
     </div>
