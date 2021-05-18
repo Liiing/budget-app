@@ -1,0 +1,18 @@
+@import './variables';
+@import './fonts';
+
+.email-verification-info-box{
+    background-color: $white;
+    position: relative;
+    text-align: initial;
+    color: $primary-color;
+    margin-top: 25px;
+    padding: 10px;
+    border-radius: 10px;
+
+    p {
+        color: $primary-color;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+}

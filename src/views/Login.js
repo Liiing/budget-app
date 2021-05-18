@@ -1,26 +1,38 @@
 import '../scss/login/login.scss';
-import Dashboard from './Dashboard.js';
 import Logo from '../components/logo.js';
 import AuthenticationInput from '../components/AuthenticationInput';
 import { useState } from 'react';
 import { useAuth } from '../AuthContext';
 import { Link, useHistory } from "react-router-dom";
+import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 
 function Login() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [loading, setLoading] = useState(false)
+  const [showEmailVerificationBox, setShowEmailVerificationBox] = useState(false)
   const history = useHistory()
-  const { login } = useAuth()
+  const { login, logout, currentUser } = useAuth()
 
   async function handleSubmit(event) {
     event.preventDefault()
 
+    if(currentUser){
+      if(currentUser.emailVerified){
+        history.push("/")
+      } else {
+        setShowEmailVerificationBox(true)
+        logout()
+      } 
+    }
+
     try{
       setLoading(true)
       await login(email,password)
-      history.push("/")
+      await history.push("/")
+      setShowEmailVerificationBox(true)
     } catch {
+      setShowEmailVerificationBox(false)
       alert("Login failed")
     }
     setLoading(false)
@@ -44,6 +56,7 @@ function Login() {
                 forgot password
               </a>
             </div>
+            {showEmailVerificationBox && <VerifyEmailInfoBox onLogin/>}
             <input className="login-button" type="submit" value="Login" disabled={loading}/>
             <div className="sign-up-container">
               <Link to="/signup">SIGN UP</Link>

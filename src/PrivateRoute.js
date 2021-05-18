@@ -4,12 +4,13 @@ import { useAuth } from "../src/AuthContext"
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
+  var userIsLoggedInAndVerified = currentUser ? currentUser.emailVerified : false
 
   return (
     <Route
       {...rest}
       render={props => {
-        return currentUser ? <Component {...props} /> : <Redirect to="/login" />
+        return userIsLoggedInAndVerified ? <Component {...props} /> : <Redirect to="/login" />
       }}
     ></Route>
   )

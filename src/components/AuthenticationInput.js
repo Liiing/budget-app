@@ -11,14 +11,14 @@ const AuthenticationInput = ({type, form, onChange, label, style, onFocus, onBlu
 			}
 			{type  === "email" && 
 				<>
-				<span className="material-icons user-icon">person</span>
-				<input className="username-input" type="email" form={form} onChange={onChange} required/>
+					<span className="material-icons user-icon">person</span>
+					<input className="username-input" type="email" form={form} onChange={onChange} required/>
 				</>
 			}
-      {type  === "confirm" && 
+      		{type  === "confirm" && 
 				<>
-				<span className="material-icons lock-icon">lock</span>
-				<input className="password-input" type="password" form={form} onChange={onChange} onFocus={onFocus} onBlur={onBlur} required/>
+					<span className="material-icons lock-icon">lock</span>
+					<input className="password-input" type="password" form={form} onChange={onChange} onFocus={onFocus} onBlur={onBlur} required/>
 				</>
 			}
 			<span className="floating-label">{label}</span>

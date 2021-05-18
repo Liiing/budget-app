@@ -27,18 +27,18 @@ ReactDOM.render(
 		<Route render={({ location }) => (
 			<AuthProvider>
 				<TransitionGroup>
-						<CSSTransition
-						key={location.pathname}
-						classNames="fade"
-						timeout={600}
-						>
-					<Switch location={location}>
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/signup" component={Signup} />
-						<PrivateRoute path="/dashboard" component={Dashboard} />
-						<PrivateRoute path="/savings" component={Savings} />
-						<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
-					</Switch>
+					<CSSTransition
+					key={location.pathname}
+					classNames="fade"
+					timeout={600}
+					>
+						<Switch location={location}>
+							<Route exact path="/login" component={Login} />
+							<Route exact path="/signup" component={Signup} />
+							<PrivateRoute path="/dashboard" component={Dashboard} />
+							<PrivateRoute path="/savings" component={Savings} />
+							<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
+						</Switch>
 					</CSSTransition>
 				</TransitionGroup>
 			</AuthProvider>
