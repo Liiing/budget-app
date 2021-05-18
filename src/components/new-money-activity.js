@@ -52,6 +52,8 @@ function NewMoneyActivity (){
       </div>
       <div className={`new-money-activity-wrapper ${newMoneyActivityWindow ? "showNewMoneyActivitiyWindow" : "hideNewMoneyActivitiyWindow"}`}>
         <div className="new-money-activity-container">
+          <span className="window-title">Add New Money Activity</span>
+          <button className="close" onClick={() => setView(false)}>X</button>
           <div className="text-input-box">
             <div>
               <input type="text" className="money" onChange={({target: {value}}) => setAmount(value)} required/>

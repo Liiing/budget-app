@@ -1,4 +1,4 @@
-import '../scss/budget.scss';
+import '../scss/dashboard/budget.scss';
 
 function Budget() {
 

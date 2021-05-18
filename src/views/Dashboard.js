@@ -38,8 +38,8 @@ function Dashboard() {
 		  <Logo />
       <div className="main-dashboard">
         <div className="budget-and-new-money-activity-container">
-          <Budget />
           <NewMoneyActivity />
+          <Budget />
         </div>
         <h2>test</h2>
       </div>
