@@ -7,6 +7,7 @@ import {Link, useHistory} from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import { getElementError } from '@testing-library/dom';
+import { db } from '../firebase/firebase';
 
 const Signup = () => {
   const [email, setEmail] = useState("")
@@ -18,6 +19,22 @@ const Signup = () => {
   const [passwordRulesView, setView] = useState(false)
   const [showEmailVerificationBox, setShowEmailVerificationBox] = useState(false)
 
+  async function createDatabaseEntry(uid){
+    var doesNotExist = true;
+    var userRef = db.ref('users/' + uid).on('value', snapshot => {
+      doesNotExist = !snapshot.exists()
+    })
+    
+    if(doesNotExist){
+      db.ref('users/' + uid).set({
+        Budget : 0,
+        Expenses : {},
+        Goals: {},
+        History: {}
+      })
+    }
+  }
+
   async function handleSubmit(event) {
     event.preventDefault()
     const passwordIsValid=validatePassword(password, passwordConfirmation)
@@ -27,6 +44,7 @@ const Signup = () => {
         setLoading(true)
         await signup(email,password).then((userCredential) => {
           userCredential.user.sendEmailVerification()
+          createDatabaseEntry(userCredential.user.uid)
           logout()
           setShowEmailVerificationBox(true)
         })

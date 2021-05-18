@@ -6,7 +6,7 @@ import "firebase/analytics"
 var firebaseConfig = {
 	apiKey: "AIzaSyDFfBHJPnormfyFlRSbdM360FsUWgbKt3Y",
 	authDomain: "btary-app.firebaseapp.com",
-	databaseURL: "https://xxxXXXX.firebaseio.com",
+	databaseURL: "https://btary-app-default-rtdb.europe-west1.firebasedatabase.app/",
 	projectId: "btary-app",
 	storageBucket: "btary-app.appspot.com",
 	messagingSenderId: "898811137304",
