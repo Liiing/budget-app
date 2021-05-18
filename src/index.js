@@ -25,7 +25,7 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
 	<Router basename="/budget-app">
 		<Route render={({ location }) => (
-			<AuthProvider>
+			<AuthProvider> 
 				<TransitionGroup>
 					<CSSTransition
 					key={location.pathname}

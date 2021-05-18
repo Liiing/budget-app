@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 
 function Login() {
+   
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [loading, setLoading] = useState(false)

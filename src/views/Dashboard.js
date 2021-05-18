@@ -4,7 +4,7 @@ import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
 import Logout from '../components/Logout.js';
-import Budget from '../components/budget';
+import Budget from '../components/budget.js';
 import NewMoneyActivity from '../components/new-money-activity';
 import Savings from '../views/Savings.js';
 import { Link, useHistory } from "react-router-dom";

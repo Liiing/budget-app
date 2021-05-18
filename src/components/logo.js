@@ -2,6 +2,7 @@ import logo from '../asset/images/piggy-bank-euro.svg';
 import '../scss/logo.scss';
 
 function Logo() {
+	 
   return (
     <div className="logo-box">
 	  <div className="logo-img-box">

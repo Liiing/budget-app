@@ -1,36 +1,24 @@
 @import '../../scss/variables';
 
 .budget-container {
-  margin-left: 30px;
-
-  input {
-    display: block;
-    border: none;
-    border-bottom: 1px solid #e4e4e4;
-    outline: none;
-    background: transparent;
-    color: $primary-color;
-    outline: none;;
-    font-size: 2.5rem;
-    font-weight: 100;
-    width: 350px;
-    margin-top: 30px;        
+  .budget-form {
+    width: 100%;
+    height: 100%;
   }
 
-  input:focus ~ .floating-label,
-  input:not(:focus):valid ~ .floating-label{
-    top: 20px;
-    font-size: 1rem;
-    opacity: 1;
-  }
+  .save-budget {
+    position: relative;
+    background-color: $primary-color;
+    color: $white;
+    padding: 20px;
+    bottom: 15px;
+    transition: 0.3s ease;
+    cursor: pointer;
 
-  .floating-label {
-    position: absolute;
-    pointer-events: none;
-    top: 45px;
-    left: 80px;
-    color: #a3b2c7;
-    font-size: 2rem;
-    transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
-  } 
+    &:hover {
+      background-color: lighten($primary-color, 40px);
+      color: $grey;
+      box-shadow: inset 0px 0px 0px 2px $black;
+    }
+  }
 }

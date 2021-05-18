@@ -30,6 +30,12 @@ body {
   padding: 0;
 }
 
+button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
@@ -37,7 +43,6 @@ code {
 // Routing transitions
 .fade-enter,
 .fade-exit {
-  position: absolute;
   top: 0;
   left: 0;
   transition: 0.6s ease opacity;
@@ -49,5 +54,41 @@ code {
 .fade-enter-active {
   opacity: 1;
   z-index: 1;
+}
+
+//Main definitions
+.floating-inputs {
+  input {
+    display: inline-block;
+    margin-right: 15px;
+    border: none;
+    border-bottom: 1px solid #e4e4e4;
+    outline: none;
+    background: transparent;
+    color: $primary-color;
+    outline: none;;
+    font-size: 2.5rem;
+    font-weight: 100;
+    width: 350px;
+    margin-top: 30px; 
+  }
+
+  input:focus ~ .floating-label,
+  input:not(:focus):valid ~ .floating-label{
+    top: 20px;
+    left: 20px;
+    font-size: 1rem;
+    opacity: 1;
+  }
+
+  .floating-label {
+    position: absolute;
+    pointer-events: none;
+    left: 25px;
+    top: 45px;
+    color: #a3b2c7;
+    font-size: 2rem;
+    transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
+  }
 }
 
