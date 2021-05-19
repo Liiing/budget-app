@@ -14,7 +14,6 @@ const Signup = () => {
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
   const { signup, logout } = useAuth()
   const [passwordRulesView, setView] = useState(false)
   const [showEmailVerificationBox, setShowEmailVerificationBox] = useState(false)
