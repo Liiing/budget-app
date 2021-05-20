@@ -7,7 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import ModalBox from '../components/ModalBox';
 
-function Login() {
+export function Login() {
    
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")

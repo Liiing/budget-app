@@ -7,8 +7,8 @@ import Signup from './views/Signup';
 import './index.scss';
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
-import {Provider} from 'react-redux'
-import store from './redux/store.js'
+import {Provider} from 'react-redux';
+import store from './redux/store.js';
 
 import {
   BrowserRouter as Router,
@@ -21,7 +21,7 @@ import {
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root') || document.createElement('div') ;
 
 ReactDOM.render(
 	<Router basename="/budget-app">
