@@ -48,10 +48,10 @@ function NewMoneyActivity (){
   return (
     <div className="button-and-new-money-activity-container">
       <div className="new-credit-entry">
-        <button className="new-credit-entry-button" onClick={() => handleView("Add as monthly credit entry", "add")}>+</button>
+        <button className="new-credit-entry-button" onClick={() => handleView("Add as monthly credit entry", "add")}></button>
       </div>
       <div className="new-expense">
-        <button className="new-expense-button" onClick={() => handleView("Add as monthly expense", "sub")}>-</button>
+        <button className="new-expense-button" onClick={() => handleView("Add as monthly expense", "sub")}></button>
       </div>
       <div className={`new-money-activity-wrapper ${newMoneyActivityWindow ? "showNewMoneyActivitiyWindow" : "hideNewMoneyActivitiyWindow"}`}>
         <div className="new-money-activity-container">
