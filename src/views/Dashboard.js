@@ -3,14 +3,13 @@ import '../scss/dashboard/dashboard-views.scss';
 import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
-import Logout from '../components/Logout.js';
-import Budget from '../components/budget.js';
-import NewMoneyActivity from '../components/new-money-activity';
-import Savings from '../views/Savings.js';
-import { Link, useHistory } from "react-router-dom";
+import Budget from '../components/dashboard/budget.js';
+import ListOfMonthlyActivities from '../components/dashboard/list-of-monthly-activities';
 import { NavLink } from 'react-router-dom';
+import NewMoneyActivity from '../components/new-money-activities.js';
 
 function Dashboard() {
+  console.log("test");
 	const [isActive, setActive] = useState("false");
 
   const handleToggle = () => {
@@ -33,7 +32,6 @@ function Dashboard() {
         <Settings />
       </div>
 		</div>
-	  <Logout />
 		<div className="main-section">
 		  <Logo />
       <div className="main-dashboard">
@@ -41,7 +39,7 @@ function Dashboard() {
           <NewMoneyActivity />
           <Budget />
         </div>
-        <h2>test</h2>
+        <ListOfMonthlyActivities />
       </div>
     </div>
 	</div>

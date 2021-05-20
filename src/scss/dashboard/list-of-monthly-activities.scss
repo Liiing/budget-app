@@ -1,0 +1,41 @@
+@import '../../scss/variables';
+
+.list-container {
+  margin-top: 40px;
+  width: 100%;
+
+  .list-titles {
+    display: flex;
+    margin-bottom: 15px;
+    color: #315382;
+    font-weight: 500;
+
+    .list-title {
+      width: 180px;
+      padding-left: 10px;
+    }
+  }
+
+  .entry-container{
+    display: flex;
+    margin-bottom: 15px;
+    max-width: 725px;
+    border-radius: 20px;
+
+    
+    &:nth-child(1n) {
+      background-color: rgb(210, 219, 231);
+    }
+
+    &:nth-child(2n) {
+      background-color: rgb(223, 228, 235);
+    }
+
+    .list-item {
+      width: 180px;
+      height: 100%;
+      padding: 10px;
+    }
+  }
+}
+

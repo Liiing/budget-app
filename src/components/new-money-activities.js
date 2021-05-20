@@ -14,16 +14,18 @@ function NewMoneyActivity (){
   const userId = auth.currentUser.uid; 
   
   var date = new Date();
-  var dd = String(date.getDate()).padStart(2, '0')
-  var mm = String(date.getMonth() + 1).padStart(2, '0')
-  var yyyy = date.getFullYear()
+  var dd = String(date.getDate()).padStart(2, '0');
+  var mm = String(date.getMonth() + 1).padStart(2, '0');
+  var yyyy = date.getFullYear();
   var hh = date.getHours();
   var min = date.getMinutes();
   var ss = date.getSeconds();
   var ms = date.getMilliseconds();
-  date = dd + '/' + mm + '/' + yyyy
+  date = dd + '/' + mm + '/' + yyyy;
 
   var dateId = dd + mm + yyyy + hh + min + ss + ms;
+  var currMonthandYear = mm + yyyy;
+  const dbRef = db.ref("users/" + userId + "/expenses/" + currMonthandYear + "/" + dateId);
   
   const handleView = (labelTextPara, type) => {
     setType(type)
@@ -32,12 +34,13 @@ function NewMoneyActivity (){
   };
 
   const writeNewMoneyActivity = () => {
-    db.ref("users/" + userId + "/Expenses/" + dateId).set({
+    dbRef.set({
       type: typeState,
       amount: parseFloat(amount),
       description: description,
       isMonthly: isChecked,
-      date: date
+      date: date,
+      id: dateId
     });
     setView(false)
   }

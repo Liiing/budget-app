@@ -40,12 +40,12 @@ export const AuthProvider = ({children}) => {
 	}
 
 	useEffect(() => {
-		const unsubsribe = auth.onAuthStateChanged(user => {
+		const unsubscribe = auth.onAuthStateChanged(user => {
 			setCurrentUser(user)
 			setLoading(false)
 		})
 
-		return unsubsribe
+		return unsubscribe
 	}, [])
 
 	const value = {

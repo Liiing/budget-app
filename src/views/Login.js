@@ -8,7 +8,7 @@ import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import ModalBox from '../components/ModalBox';
 import ErrorBox from '../components/ErrorBox';
 
-function Login() {
+export function Login() {
    
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")

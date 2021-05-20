@@ -3,7 +3,6 @@ import '../scss/dashboard/savings.scss';
 import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
-import Logout from '../components/Logout.js';
 import { Link, useHistory } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 
@@ -30,7 +29,6 @@ function Savings() {
             <Settings />
          </div>
 		</div>
-	<Logout />
 		<div className="main-section">
 		<Logo />
 		<div className="main-dashboard savings">

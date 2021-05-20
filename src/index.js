@@ -8,7 +8,8 @@ import './index.scss';
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
 import UnauthenticatedRoute from './UnauthenticatedRoute';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {Provider} from 'react-redux';
+import store from './redux/store.js';
 
 import {
   BrowserRouter as Router,
@@ -21,30 +22,21 @@ import {
 let vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root') || document.createElement('div') ;
 
 ReactDOM.render(
 	<Router basename="/budget-app">
-		<Route render={({ location }) => (
-			<AuthProvider> 
-				<TransitionGroup>
-					<CSSTransition
-					key={location.pathname}
-					classNames="fade"
-					timeout={600}
-					>
-						<Switch location={location}>
-							<UnauthenticatedRoute exact path="/login" component={Login} />
-							<UnauthenticatedRoute exact path="/signup" component={Signup} />
-							<PrivateRoute path="/dashboard" component={Dashboard} />
-							<PrivateRoute path="/savings" component={Savings} />
-							<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
-						</Switch>
-					</CSSTransition>
-				</TransitionGroup>
-			</AuthProvider>
-		)}>
-		</Route>
+		<AuthProvider> 
+			<Provider store={store}>
+				<Switch>
+					<UnauthenticatedRoute exact path="/login" component={Login} />
+					<UnauthenticatedRoute exact path="/signup" component={Signup} />
+					<PrivateRoute path="/dashboard" component={Dashboard} />
+					<PrivateRoute path="/savings" component={Savings} />
+					<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
+				</Switch>
+			</Provider>
+		</AuthProvider>
 	</Router>,
 	rootElement
 );
