@@ -39,7 +39,7 @@ function Dashboard() {
           <NewMoneyActivity />
           <Budget />
         </div>
-        <h2>test</h2>
+        <ListOfMonthlyActivities />
       </div>
     </div>
 	</div>
