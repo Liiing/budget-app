@@ -4,13 +4,14 @@ import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
 import Logout from '../components/Logout.js';
-import Budget from '../components/budget.js';
-import NewMoneyActivity from '../components/new-money-activity';
+import Budget from '../components/dashboard/budget.js';
+import NewMoneyActivity from '../components/dashboard/new-money-activity';
 import Savings from '../views/Savings.js';
 import { Link, useHistory } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 
 function Dashboard() {
+  console.log("test");
 	const [isActive, setActive] = useState("false");
 
   const handleToggle = () => {
@@ -33,7 +34,6 @@ function Dashboard() {
         <Settings />
       </div>
 		</div>
-	  <Logout />
 		<div className="main-section">
 		  <Logo />
       <div className="main-dashboard">

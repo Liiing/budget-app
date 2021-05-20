@@ -7,7 +7,8 @@ import Signup from './views/Signup';
 import './index.scss';
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import {Provider} from 'react-redux'
+import store from './redux/store.js'
 
 import {
   BrowserRouter as Router,
@@ -24,26 +25,17 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
 	<Router basename="/budget-app">
-		<Route render={({ location }) => (
-			<AuthProvider> 
-				<TransitionGroup>
-					<CSSTransition
-					key={location.pathname}
-					classNames="fade"
-					timeout={600}
-					>
-						<Switch location={location}>
-							<Route exact path="/login" component={Login} />
-							<Route exact path="/signup" component={Signup} />
-							<PrivateRoute path="/dashboard" component={Dashboard} />
-							<PrivateRoute path="/savings" component={Savings} />
-							<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
-						</Switch>
-					</CSSTransition>
-				</TransitionGroup>
-			</AuthProvider>
-		)}>
-		</Route>
+		<AuthProvider> 
+			<Provider store={store}>
+				<Switch>
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/signup" component={Signup} />
+					<PrivateRoute path="/dashboard" component={Dashboard} />
+					<PrivateRoute path="/savings" component={Savings} />
+					<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>
+				</Switch>
+			</Provider>
+		</AuthProvider>
 	</Router>,
 	rootElement
 );

@@ -4,21 +4,116 @@
   .budget-form {
     width: 100%;
     height: 100%;
+
+    &.floating-inputs {
+      input:focus ~ .budget-label,
+      input:not(:focus):valid ~ .budget-label{
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #a3b2c7;
+        font-size: 16px;
+        position: absolute;
+        pointer-events: none;
+      }
+    }
+
+    input {
+      margin-top: 20px;
+    }
+
+    input.budget {
+      border: 0;
+      width: 20%;
+      font-size: 47px;
+
+      @media ($down: $md) {
+        width: 40%;
+      }
+
+      @media ($down: $sm) {
+        width: 180px;
+      }
+    }
+
+    .budget-label {
+      position: absolute;
+      pointer-events: none;
+      left: 0px;
+      top: 25px;
+      color: #a3b2c7;
+      font-size: 23px;
+      transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
+    }
+
+    .diff-container {
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      margin-left: 180px;
+
+      @media ($down: $lg) {
+        margin-left: 0;
+      }
+
+      @media ($down: $sm) {
+        margin-top: 20px;
+      }
+
+      .budget-label {
+        top: -13px;
+      }
+
+      input.budget-diff {
+        pointer-events: none;
+        border: 0;
+        width: 100%;
+        font-size: 34px;
+        color: $color-difference;
+
+        @media ($down: $xs) {
+          padding-top: 5px;
+        }
+      }
+    }
+  }
+
+  .not-saved {
+    .save-budget {
+      opacity: 1;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
   }
 
   .save-budget {
-    position: relative;
+    position: absolute;
     background-color: $primary-color;
     color: $white;
     padding: 20px;
     bottom: 15px;
-    transition: 0.3s ease;
+    opacity: 0;
+    display: block;
+    transition: opacity 0.3s ease;
     cursor: pointer;
+    left: 330px;
 
     &:hover {
       background-color: lighten($primary-color, 40px);
       color: $grey;
       box-shadow: inset 0px 0px 0px 2px $black;
+    }
+  }
+
+  .saved {
+    .budget {
+      color: $color-budget;
+      position: relative;
+      pointer-events: none;
+    }
+
+    .save-budget {
+      display: none;
     }
   }
 }

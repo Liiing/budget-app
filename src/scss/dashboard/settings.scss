@@ -1,6 +1,81 @@
 @import '../variables';
 
-.settings {
+.settings-wrapper {
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.3s ease;
+
+   .logout {
+      display: none;
+   }
+
+   .close-settings {
+      display: none;
+   }
+
+   &.open {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0.2);
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      pointer-events: all;
+
+      .settings-window {
+         width: 450px;
+         height: 450px;
+         padding: 35px;
+         background-color: $secondary-color;
+         border-radius: 10px;
+         position: relative;
+         transition: transform 0.3s ease;
+
+         .settings {
+            display: block;
+         }
+
+         .logout {
+            position: absolute;
+            border: none;
+            background-color: $primary-color;
+            color: $white;
+            border-radius: 5px;
+            font-size: 30px;
+            bottom: 20px;
+            right: 20px;
+            transition: 0.3s ease;
+            cursor: pointer;
+            padding: 10px; 
+            display: block;
+
+            &:hover {
+               background-color: lighten($color-difference, 30px);
+               color: $white;
+               box-shadow: inset 0px 0px 0px 2px $black;
+            }
+         }
+
+         .close-settings {
+            background-color: transparent;
+            position: absolute;
+            right: 35px;
+            top: 35px;
+            color: $white;
+            font-size: 35px;
+            cursor: pointer;
+            display: block;
+         }
+      }
+   }
+}
+
+.settings-opener {
    position: absolute;
    display: block;
    left: 50%;
@@ -9,6 +84,12 @@
    width: 55px;
    height: 55px;
    cursor: pointer;
+
+   @media ($up: $md) {
+      .logout {
+         display: none;
+      }
+   }
 
    @media ($down: $md) {
       display: none;
