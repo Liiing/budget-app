@@ -33,8 +33,9 @@ function onDashBoardLoad(state, list) {
  var copiedMoneyActivityList = [...state.moneyActivityList];
 
   copiedMoneyActivityList = copiedMoneyActivityList.concat(list);
-  state.moneyActivitList = copiedMoneyActivityList;
-  
+  state.moneyActivityList = copiedMoneyActivityList;
+
+
   return state;
 }
 
@@ -42,7 +43,7 @@ function onAddMoneyEntry(state, entry) {
   var copiedMoneyActivityList = [...state.moneyActivityList];
 
   copiedMoneyActivityList.push(entry);
-  state.moneyActivitList = copiedMoneyActivityList;
+  state.moneyActivityList = copiedMoneyActivityList;
 
   return state;
 }
@@ -52,7 +53,7 @@ function onDeleteMoneyEntry(state, entryId) {
   const deleteEntryIndex = findEntryIndexById(state, entryId);
 
   copiedMoneyActivityList.splice(deleteEntryIndex, 1);
-    state.moneyActivitList = copiedMoneyActivityList;
+    state.moneyActivityList = copiedMoneyActivityList;
 
     return state;
 }

@@ -6,22 +6,26 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ListOfMonthlyActivities() {
-  const dispatch = useDispatch();
+  
   var date = new Date();
   var mm = String(date.getMonth() + 1).padStart(2, '0')
   var yyyy = date.getFullYear();
   var currMonthandYear = mm + yyyy;
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId + "/expenses/" + currMonthandYear);
+  
+  const dispatch = useDispatch();
   const moneyActivityList = useSelector(state => state.moneyActivityList);
 
-  const [isListEmpty, setListState] = useState(false);
+  // const [isListEmpty, setListState] = useState(false);
  
+  var isListEmpty = false;
+
   console.log(moneyActivityList);
 
-  fetchUserMoneyActivityEnrties();
+  fetchUserMoneyActivityEntries();
 
-  function fetchUserMoneyActivityEnrties() {
+  function fetchUserMoneyActivityEntries() {
     var liist = [];
     dbRef.on('value', (snapshot) => {
       const userObj = snapshot.val();
@@ -30,9 +34,9 @@ function ListOfMonthlyActivities() {
         Object.keys(userObj).forEach(function(prop) {
             liist.push(userObj[prop]);
         });
-        dispatch({type: 'moneyActitivtyList/updateList', list: liist});  
+        dispatch({type: 'moneyActitivtyList/updateList', list: liist}); 
       } else {
-        setListState(true);
+        isListEmpty = true;
         return false;
       }
     });
@@ -45,8 +49,6 @@ function ListOfMonthlyActivities() {
       reRender("Updated");
     }, 100);
   }, []);
-
-  
 
   return (
     <div className="list-container">

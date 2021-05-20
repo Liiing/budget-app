@@ -4,8 +4,9 @@ import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
 import Budget from '../components/dashboard/budget.js';
-import NewMoneyActivity from '../components/dashboard/new-money-activity';
+import NewMoneyActivity from '../components/new-money-activity';
 import { NavLink } from 'react-router-dom';
+import ListOfMonthlyActivities from '../components/dashboard/list-of-monthly-activities';
 
 function Dashboard() {
   console.log("test");
@@ -38,7 +39,7 @@ function Dashboard() {
           <NewMoneyActivity />
           <Budget />
         </div>
-        <h2>test</h2>
+        <ListOfMonthlyActivities />
       </div>
     </div>
 	</div>
