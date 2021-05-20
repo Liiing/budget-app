@@ -1,0 +1,36 @@
+@import '../../scss/variables';
+
+.list-container {
+  margin-top: 40px;
+  width: 100%;
+
+  .list-titles {
+    display: flex;
+    margin-bottom: 15px;
+
+    .list-title {
+      width: 180px;
+    }
+  }
+
+  .entry-container{
+    display: flex;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 725px;
+    
+    &:nth-child(1n) {
+      background-color: rgb(158, 105, 255);
+    }
+
+    &:nth-child(2n) {
+      background-color: hotpink;
+    }
+
+    .list-item {
+      width: 180px;
+      height: 100%;
+    }
+  }
+}
+
