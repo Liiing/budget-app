@@ -2,6 +2,7 @@ import '../../scss/dashboard/budget.scss';
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase/firebase';
 import { auth } from '../../firebase/firebase';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Budget() {
   // Create state variable: budget and saved
@@ -12,24 +13,41 @@ function Budget() {
   // Get the current logged in user`s uid
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId);
+  const moneyActivityList = useSelector(state => state.moneyActivityList);
+  const dispatch = useDispatch();
 
   // Function to get the current user`s budget / is getting fetched from the firebase database
-  function fetchUserBudget(callback) {
-    dbRef.on('value', (snapshot) => {
+  async function fetchUserBaseBudget(callback) {
+    const getBaseBudget = new Promise((baseBudget) => {
+      dbRef.on('value', (snapshot) => {
       const userObj = snapshot.val();
-      var currentBudget = userObj.Budget;
-      //sets the budget state to currentBudget
-      setBudget(currentBudget);
-    });
-    // Callback to wait for data fetch function
-    setTimeout(function() {
-      callback();
-    }, 100);
+      baseBudget(userObj.baseBudget);
+    })})
+    var promiseResult =  await getBaseBudget;
+    setBudget(promiseResult);
+
+    callback();
   }
   // Function will invoke at component render
   useEffect(() => {
-    fetchUserBudget(checkEmptyBudget);
+    fetchUserBaseBudget(checkEmptyBudget);
   });
+
+  function calcCurrBudget() {
+    var allExpenses = 0;
+    var allCredits = 0;
+
+    moneyActivityList.forEach(entry => {
+      if (entry.type === 'sub') {
+        allExpenses += entry.amount; 
+      } else {
+        allCredits += entry.amount;
+      }
+    });
+
+    return budget + allCredits - allExpenses;
+  }
+
   // Function to get value from budget input and push it as /user/budget entry to the firebase database
   function addBudget() {
     inputBudget = parseFloat(inputBudget);
@@ -39,7 +57,7 @@ function Budget() {
       return;
     } else {
       db.ref("users/" + userId).set({
-        Budget: parseFloat(inputBudget)
+        baseBudget: parseFloat(inputBudget)
       });
     }
   }
@@ -55,14 +73,15 @@ function Budget() {
   // Checks budget value and sets it if not empty as current budget input value
   function checkValue() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
-      return budget + " €";
+      return calcCurrBudget() + " €";
     } else {
       return inputBudget;
     }
   }
+  
   function checkDifference() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
-      return "- " + budget;
+      return "- " + (budget - calcCurrBudget());
     } else {
       return inputBudget;
     }

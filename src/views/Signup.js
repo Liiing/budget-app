@@ -29,9 +29,9 @@ const Signup = () => {
     if(doesNotExist){
       db.ref('users/' + uid).set({
         baseBudget : 0,
-        Budget : 0,
-        Expenses : {},
-        Goals: {},
+        budget : 0,
+        expenses : {},
+        goals: {},
         History: {}
       })
     }
