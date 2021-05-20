@@ -6,6 +6,7 @@ import { useAuth } from '../AuthContext';
 import { Link, useHistory } from "react-router-dom";
 import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import ModalBox from '../components/ModalBox';
+import ErrorBox from '../components/ErrorBox';
 
 function Login() {
    
@@ -14,35 +15,50 @@ function Login() {
   const [loading, setLoading] = useState(false)
   const [showEmailVerificationBox, setShowEmailVerificationBox] = useState(false)
   const [showPasswordResetModal, setShowPasswordResetModal] = useState(false)
+  const [error, setError] = useState("")
+  const [canBeRedirected, setCanBeRedirected] = useState(false)
   const history = useHistory()
-  const { login, logout, currentUser } = useAuth()
-  console.log("Loading Login page...")
-  console.log(showPasswordResetModal)
+  const { login, logout } = useAuth()
 
   async function handleSubmit(event) {
     event.preventDefault()
-    console.log("TRYING to log in...")
-
     setLoading(true)
-    if(currentUser){
-      if(currentUser.emailVerified){
-        history.push("/")
-      } else {
-        setShowEmailVerificationBox(true)
-        logout()
-      } 
-    }
+    setShowEmailVerificationBox(false)
+    setError("")
+    setCanBeRedirected(false)
 
     try{
       await login(email,password)
-      await history.push("/")
-      setShowEmailVerificationBox(true)
-    } catch {
-      setShowEmailVerificationBox(false)
-      alert("Login failed")
+      .then((userCredentials) => {
+        if(userCredentials.user.emailVerified){
+          setCanBeRedirected(true)
+        } else {
+          setShowEmailVerificationBox(true)
+          logout()
+        }
+        
+      })
+      .catch((error) => {setError(error.code)})
+    } catch {setError("auth/unknown-error")}
+
+    if(canBeRedirected){
+      history.push("/dashboard")
     }
     setLoading(false)
   }
+
+  async function resendVerificationEmail(setEmailSend) {
+		try {
+      await login(email,password)
+      .then((userCredential) => {
+          userCredential.user.sendEmailVerification()
+          setEmailSend(true)
+          logout()
+        }
+      )
+      .catch((error) => {setError(error.code)})
+		} catch {setError("auth/unknown-error")}
+	}
 
   return (
     <div className="wrapper">
@@ -58,11 +74,12 @@ function Login() {
             <AuthenticationInput type="password" form="login-form" label="password"  onChange={({target: {value}}) => setPassword(value)}/>
 
             <div className="forgot-password-container">
-              <a className="forgot-password" onClick={() => {setShowPasswordResetModal(true)}}>
+              <p className="forgot-password" onClick={() => {setShowPasswordResetModal(true)}}>
                 forgot password
-              </a>
+              </p>
             </div>
-            {showEmailVerificationBox && <VerifyEmailInfoBox onLogin/>}
+            {error && <ErrorBox errorCode={error}/>}
+            {showEmailVerificationBox && <VerifyEmailInfoBox resendVerificationEmail={resendVerificationEmail} onLogin/>}
             <input className="login-button" type="submit" value="Login" disabled={loading}/>
             <div className="sign-up-container">
               <Link to="/signup">SIGN UP</Link>
@@ -71,7 +88,7 @@ function Login() {
         </div>
       </div>
 
-      {showPasswordResetModal && <ResetPasswordModal onClose={() => {setShowPasswordResetModal(false)}} />}
+      {showPasswordResetModal && <ResetPasswordModal onClose={() => {setShowPasswordResetModal(false)}}/>}
     </div>
   );
 }

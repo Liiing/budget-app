@@ -7,6 +7,7 @@ import Signup from './views/Signup';
 import './index.scss';
 import { AuthProvider } from './AuthContext';
 import PrivateRoute from './PrivateRoute';
+import UnauthenticatedRoute from './UnauthenticatedRoute';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import {
@@ -33,8 +34,8 @@ ReactDOM.render(
 					timeout={600}
 					>
 						<Switch location={location}>
-							<Route exact path="/login" component={Login} />
-							<Route exact path="/signup" component={Signup} />
+							<UnauthenticatedRoute exact path="/login" component={Login} />
+							<UnauthenticatedRoute exact path="/signup" component={Signup} />
 							<PrivateRoute path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/savings" component={Savings} />
 							<PrivateRoute path="/"><Redirect to="/dashboard" /></PrivateRoute>

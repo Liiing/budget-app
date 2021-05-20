@@ -12,7 +12,7 @@ const AuthenticationInput = ({type, form, onChange, label, style, onFocus, onBlu
 			{type  === "email" && 
 				<>
 					<span className="material-icons user-icon">person</span>
-					<input className="username-input" type="email" form={form} onChange={onChange} required/>
+					<input className="username-input" type="text" form={form} onChange={onChange} required/>
 				</>
 			}
       		{type  === "confirm" && 

@@ -2,19 +2,9 @@ import React, { useState } from 'react'
 import { useAuth } from '../AuthContext';
 import '../scss/verifyEmailInfoBox.scss'
 
-function VerifyEmailInfoBox({onLogin = false}) {
-
-	const { sendEmailVerification, currentUser } = useAuth()
+function VerifyEmailInfoBox({onLogin = false, resendVerificationEmail}) {
+	
 	const [emailSend, setEmailSend] = useState(false)
-
-	async function resendEmail() {
-		try {
-			sendEmailVerification()
-			setEmailSend(true)
-		} catch {
-			alert("Something went wrong...")
-		}
-	}
 
 	return (
 		<div className="email-verification-info-box">
@@ -23,7 +13,7 @@ function VerifyEmailInfoBox({onLogin = false}) {
 			{onLogin && 
 				<>
 					<p>Please verify your email before using budgetary.</p> 
-					{!emailSend && <u onClick={() => {resendEmail()}}>Resend Email</u>}
+					{!emailSend && <u onClick={() => {resendVerificationEmail(setEmailSend)}}>Resend Email</u>}
 					{emailSend && <p>Verification Email has been resend.</p>}
 				</>
 			}

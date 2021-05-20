@@ -8,6 +8,7 @@ import { useAuth } from '../AuthContext';
 import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import { getElementError } from '@testing-library/dom';
 import { db } from '../firebase/firebase';
+import ErrorBox from '../components/ErrorBox';
 
 const Signup = () => {
   const [email, setEmail] = useState("")
@@ -17,6 +18,7 @@ const Signup = () => {
   const { signup, logout } = useAuth()
   const [passwordRulesView, setView] = useState(false)
   const [showEmailVerificationBox, setShowEmailVerificationBox] = useState(false)
+  const [error, setError] = useState("")
 
   async function createDatabaseEntry(uid){
     var doesNotExist = true;
@@ -34,25 +36,49 @@ const Signup = () => {
     }
   }
 
+  function checkIfAllFieldsAreFilled(){
+    if(!email){
+      setError("auth/missing-email")
+      return false;
+    }
+    if(!password){
+      return false;
+    }
+    if(!passwordConfirmation){
+      return false;
+    }
+    return true;
+  }
+
   async function handleSubmit(event) {
     event.preventDefault()
-    const passwordIsValid=validatePassword(password, passwordConfirmation)
+    setError("")
+    var validParameters = true
 
-    if (passwordIsValid){
+    if(!checkIfAllFieldsAreFilled()){
+      setError("auth/missing-fields")
+      validParameters = false
+    }
+    if(!validatePassword(password,passwordConfirmation) && validParameters){
+      setError("auth/password-insufficient")
+      validParameters = false
+    }
+
+    if (validParameters){
       try{
         setLoading(true)
-        await signup(email,password).then((userCredential) => {
+        await signup(email,password)
+        .then((userCredential) => {
           userCredential.user.sendEmailVerification()
           createDatabaseEntry(userCredential.user.uid)
           logout()
           setShowEmailVerificationBox(true)
         })
-      } catch {
-        alert("AccountCreation failed")
-      }
+        .catch(error => setError(error.code))
+      } catch {setError("auth/unknown-error")}
       setLoading(false)
     }
-  } 
+  }
 
   return (
     <div className="wrapper">
@@ -78,7 +104,8 @@ const Signup = () => {
             </div>
             <AuthenticationInput type="confirm" form="signup-form" label="confirm password" onChange={({target: {value}}) => setPasswordConfirmation(value)}/>
 
-            { showEmailVerificationBox && <VerifyEmailInfoBox/>}
+            {error && <ErrorBox errorCode={error}/>}
+            {showEmailVerificationBox && <VerifyEmailInfoBox/>}
 
             <input className="signup-button" type="submit" value="Sign Up" disabled={loading}/>
             <div className="sign-up-container">
