@@ -15,29 +15,24 @@ function ListOfMonthlyActivities() {
   const dbRef = db.ref("users/" + userId + "/expenses/" + currMonthandYear);
   
   const dispatch = useDispatch();
-  const moneyActivityList = useSelector(state => state.moneyActivityList);
+  const moneyActivityList = useSelector(state => state.moneyActivityList); 
+  const [isListEmpty, setListEmpty] = useState(false);
 
-  // const [isListEmpty, setListState] = useState(false);
- 
-  var isListEmpty = false;
-
-  console.log(moneyActivityList);
-
-  fetchUserMoneyActivityEntries();
-
-  function fetchUserMoneyActivityEntries() {
+  function fetchUserMoneyActivityEntries(dispatch) {
     var liist = [];
     dbRef.on('value', (snapshot) => {
       const userObj = snapshot.val();
 
-      if (userObj !== null) {
+      if (userObj !== null && userObj !== "" && userObj !== 0) {
         Object.keys(userObj).forEach(function(prop) {
             liist.push(userObj[prop]);
+            console.log(liist);
         });
         dispatch({type: 'moneyActitivtyList/updateList', list: liist}); 
+        liist = [];
+        setListEmpty(false);
       } else {
-        isListEmpty = true;
-        return false;
+        setListEmpty(true);
       }
     });
   }
@@ -45,10 +40,11 @@ function ListOfMonthlyActivities() {
   const [render, reRender] = useState("");
 
   useEffect(() => {
+    fetchUserMoneyActivityEntries(dispatch);
     setTimeout(() => {
       reRender("Updated");
     }, 100);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="list-container">

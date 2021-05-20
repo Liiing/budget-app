@@ -32,9 +32,8 @@ function rootReducer(state = initialState, action) {
 function onDashBoardLoad(state, list) {
  var copiedMoneyActivityList = [...state.moneyActivityList];
 
-  copiedMoneyActivityList = copiedMoneyActivityList.concat(list);
+  copiedMoneyActivityList = list;
   state.moneyActivityList = copiedMoneyActivityList;
-
 
   return state;
 }
