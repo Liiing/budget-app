@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import Budget from '../components/dashboard/budget.js';
 import ListOfMonthlyActivities from '../components/dashboard/list-of-monthly-activities';
 import { NavLink } from 'react-router-dom';
-import NewMoneyActivity from '../components/new-money-activities.js';x
+import NewMoneyActivity from '../components/new-money-activities.js';
 
 function Dashboard() {
   console.log("test");
