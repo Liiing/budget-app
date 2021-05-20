@@ -2,7 +2,7 @@ import '../../scss/dashboard/budget.scss';
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase/firebase';
 import { auth } from '../../firebase/firebase';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function Budget() {
   // Create state variable: budget and saved
@@ -10,12 +10,11 @@ function Budget() {
   var [inputBudget, setInputBudget] = useState();
   const [isSaved, setSave] = useState(false);
   const [labelText, setLabelText] = useState("New monthly budget");
+  const moneyActivityList = useSelector(state => state.moneyActivityList);
   // Get the current logged in user`s uid
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId);
-  const moneyActivityList = useSelector(state => state.moneyActivityList);
-  const dispatch = useDispatch();
-
+  
   // Function to get the current user`s budget / is getting fetched from the firebase database
   async function fetchUserBaseBudget(callback) {
     const getBaseBudget = new Promise((baseBudget) => {
@@ -23,6 +22,7 @@ function Budget() {
       const userObj = snapshot.val();
       baseBudget(userObj.baseBudget);
     })})
+    
     var promiseResult =  await getBaseBudget;
     setBudget(promiseResult);
 
@@ -61,6 +61,7 @@ function Budget() {
       });
     }
   }
+
   // Checks on render if the budget from firebase is empty and sets the label of the input accordingly
   function checkEmptyBudget() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
@@ -70,6 +71,7 @@ function Budget() {
       return false;
     }
   }
+
   // Checks budget value and sets it if not empty as current budget input value
   function checkValue() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
@@ -78,7 +80,7 @@ function Budget() {
       return inputBudget;
     }
   }
-  
+
   function checkDifference() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
       return "- " + (budget - calcCurrBudget());
@@ -86,6 +88,7 @@ function Budget() {
       return inputBudget;
     }
   }
+
   // Handle save submit from form and run addBudget function
   function handleSave(event) {
     event.preventDefault();
