@@ -90,11 +90,11 @@
         color: $color-difference;
 
         &.diff-green {
-          color: green;
+          color: #80bd80;
         }
 
         &.diff-red {
-          color: $color-difference;
+          color: #c56e6e;
         }
 
         @media ($down: $xs) {
