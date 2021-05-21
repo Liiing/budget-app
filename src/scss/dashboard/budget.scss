@@ -89,6 +89,14 @@
         font-size: 34px;
         color: $color-difference;
 
+        &.diff-green {
+          color: green;
+        }
+
+        &.diff-red {
+          color: $color-difference;
+        }
+
         @media ($down: $xs) {
           padding-top: 5px;
         }
