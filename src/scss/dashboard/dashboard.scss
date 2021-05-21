@@ -211,7 +211,7 @@
 	height: 100vh;
 
 	@media ($down: $md) {
-		padding-left: 30px;
+		padding: 30px 0;
 	}
 
 	.main-dashboard {
@@ -227,11 +227,26 @@
 		border-radius: 15px;
 		box-shadow: 5px 4px 20px 2px rgba(80, 80, 80, 0.59);
 
+		@media ($down: $md) {
+			width: 93%;
+			margin: 55px auto;
+		}
+
     .budget-and-new-money-activity-container {
       display: flex;
 		width: 100%;
 		position: relative;
 		border-bottom: 2px solid lighten($grey, 40px);
+
+		@media ($down: $sm) {
+			flex-direction: column;
+		}
+
+		.budget-container {
+			@media ($down: $sm) {
+				margin-top: 20px;
+			}
+		}
 
 		.button-and-new-money-activity-container {
 			position: relative;
@@ -239,23 +254,39 @@
 			top: 0;
 			left: 0px; 
 
+			.new-credit-entry, .new-expense {
+				@media ($down: $sm) {
+					width: 70px;
+					display: inline-block;
+				}
+			}
+
 			.new-credit-entry-button, .new-expense-button {
 				position: relative;
 				cursor: pointer;
-				height: 25px;
-				width: 25px;
-				top: 10px;
+				height: 40px;
+				width: 40px;
+				top: 0;
 				margin-right: 15px;
+				border-radius: 30px;
+
+				@media ($down: $sm) {
+					background-color:	lighten($grey, 43px);
+				}
 
 				&::before, &::after {
 					content: "";
 					position: absolute;
-					width: 30px;
+					width: 27px;
 					height: 2px;
 					background-color: rgb(41, 153, 41);
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%, -50%);
+
+					@media ($down: $sm) {
+						width: 25px;
+					}
 				}
 
 				&::after {
@@ -278,7 +309,6 @@
     }
 
 		@media ($down: $md) {
-			width: 97%;
 			height: 800px;
 		}
 	}

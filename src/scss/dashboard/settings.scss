@@ -45,8 +45,7 @@
             border: none;
             background-color: $primary-color;
             color: $white;
-            border-radius: 5px;
-            font-size: 30px;
+            font-size: 23px;
             bottom: 20px;
             right: 20px;
             transition: 0.3s ease;
@@ -54,8 +53,13 @@
             padding: 10px; 
             display: block;
 
+            @media ($down: $md) {
+               font-size: 20px;
+               border-radius: 5px;
+            }
+
             &:hover {
-               background-color: lighten($color-difference, 30px);
+               background-color: lighten($color-difference, 15px);
                color: $white;
                box-shadow: inset 0px 0px 0px 2px $black;
             }

@@ -3,6 +3,20 @@
 .list-container {
   margin-top: 40px;
   width: 100%;
+  overflow-y: scroll;
+  max-height: 400px;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+
+  @media ($down: $md) {
+    max-height: 550px;
+  }
+
+  @media ($down: $sm) {
+    max-height: 400px;
+    height: 100%;
+    overflow: scroll;
+  }
 
   .list-titles {
     display: flex;
@@ -22,6 +36,12 @@
     max-width: 725px;
     border-radius: 20px;
 
+    @media ($down: $sm) {
+      width: 100%;
+      max-width: 100%;
+      min-width: 100vw;
+    }
+
     
     &:nth-child(1n) {
       background-color: rgb(210, 219, 231);
@@ -35,6 +55,10 @@
       width: 180px;
       height: 100%;
       padding: 10px;
+
+      @media ($down: $sm) {
+        width: 100%;
+      }
     }
   }
 }
