@@ -36,6 +36,15 @@
     max-width: 725px;
     border-radius: 20px;
 
+    .amount-container {
+       &.expense {
+         color: #ca6262;
+       }
+       &.credit{
+         color: #47ac59;
+       }
+    }
+
     @media ($down: $sm) {
       width: 100%;
       max-width: 100%;

@@ -59,8 +59,8 @@ function ListOfMonthlyActivities() {
       ) : (
         moneyActivityList.map((entry) => 
           <div key={entry.id} className="entry-container">
-            <div className="list-item amount-container">
-              {entry.amount}
+            <div className={`list-item amount-container ${entry.type === 'sub' ? "expense" : "credit"}`} >
+              {entry.type === 'sub' ? "- " + entry.amount.toFixed(2) : "+ " + entry.amount.toFixed(2)}
             </div>
             <div className="list-item description-container">
               {entry.description}

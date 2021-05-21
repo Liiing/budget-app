@@ -77,7 +77,7 @@ function Budget() {
   // Checks budget value and sets it if not empty as current budget input value
   function checkValue() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
-      return calcCurrBudget() + " €";
+      return calcCurrBudget().toFixed(2) + " €";
     } else {
       return inputBudget;
     }
@@ -88,10 +88,10 @@ function Budget() {
       const currBudget = calcCurrBudget();
       if (currBudget > budget) {
         isDiffGreen = true;        
-        return "+ " + (currBudget - budget);
+        return "+ " + (currBudget - budget).toFixed(2);
       } else { if (budget > currBudget) {
         isDiffGreen = false; 
-        return "- " + (budget - currBudget);
+        return "- " + (budget - currBudget).toFixed(2);
         } else {
           isDiffGreen = true;   
           return 0;
