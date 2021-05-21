@@ -3,7 +3,6 @@ import '../scss/dashboard/savings.scss';
 import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 
 function Savings() {
@@ -31,9 +30,7 @@ function Savings() {
 		</div>
 		<div className="main-section">
 		<Logo />
-		<div className="main-dashboard savings">
-			<div className="savings-component-here"><h1>Savings</h1></div>
-		</div>
+		
 		</div>
 	</div>
   );
