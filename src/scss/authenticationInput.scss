@@ -15,12 +15,20 @@
 	}
 
 	.user-icon {
-		bottom: 8%;
+		bottom: 15%;
 	}
 
 	.lock-icon {
-		bottom: 15%;
+		bottom: 20%;
 	}
+
+  .password-input {
+    margin-top: 70px;
+  }
+
+  .confirm {
+    margin-top: 50px;
+  }
 	
 	input {
 		display: block;
@@ -54,7 +62,7 @@
 		transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
 
 		@media ($down: $sm) {
-			top: 8px;
+			top: 7px;
 			font-size: 1rem;
 		}
 	}  

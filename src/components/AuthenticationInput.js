@@ -18,7 +18,7 @@ const AuthenticationInput = ({type, form, onChange, label, style, onFocus, onBlu
       		{type  === "confirm" && 
 				<>
 					<span className="material-icons lock-icon">lock</span>
-					<input className="password-input" type="password" form={form} onChange={onChange} onFocus={onFocus} onBlur={onBlur} required/>
+					<input className="password-input confirm" type="password" form={form} onChange={onChange} onFocus={onFocus} onBlur={onBlur} required/>
 				</>
 			}
 			<span className="floating-label">{label}</span>
