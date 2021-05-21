@@ -6,6 +6,10 @@
   top: 43%;
   left: 13%;
 
+  @media ($down: $md) {
+    padding-left: 20px;
+	}
+
   .logo-img-box {
     position: relative;
     display: block;

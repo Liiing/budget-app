@@ -25,15 +25,27 @@
 
     input.budget {
       border: 0;
-      width: 20%;
+      width: 25%;
+      min-width: 250px;
       font-size: 47px;
 
+      @media ($up: $xl) {
+        width: 15%;
+        min-width: 240px;
+      }
+
       @media ($down: $md) {
-        width: 40%;
+        width: calc(42% + 50px);
       }
 
       @media ($down: $sm) {
-        width: 180px;
+        width: calc(60% + 50px);
+        min-width: 0;
+        margin-bottom: 25px;
+      }
+
+      @media ($down: $xs) {
+        width: 80%;
       }
     }
 
@@ -50,15 +62,20 @@
     .diff-container {
       position: relative;
       display: inline-block;
-      width: 50%;
-      margin-left: 180px;
+      width: 40%;
+      margin-left: 50px;
 
       @media ($down: $lg) {
         margin-left: 0;
       }
 
+      @media ($down: $md) {
+        width: 60%;
+      }
+
       @media ($down: $sm) {
         margin-top: 20px;
+        width: 100%;
       }
 
       .budget-label {
@@ -88,16 +105,22 @@
   }
 
   .save-budget {
-    position: absolute;
+    position: relative;
     background-color: $primary-color;
     color: $white;
     padding: 20px;
+    max-width: 100px;
+    border-radius: 10px;
     bottom: 15px;
     opacity: 0;
-    display: block;
+    display: inline-block;
     transition: opacity 0.3s ease;
     cursor: pointer;
-    left: 330px;
+    left: 0;
+
+    @media ($down: $lg) {
+      margin-right: 20px;
+    }
 
     &:hover {
       background-color: lighten($primary-color, 40px);
