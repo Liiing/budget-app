@@ -1,5 +1,5 @@
 import '../../scss/dashboard/budget.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { db } from '../../firebase/firebase';
 import { auth } from '../../firebase/firebase';
 import { useSelector } from 'react-redux';
@@ -11,9 +11,11 @@ function Budget() {
   const [isSaved, setSave] = useState(false);
   const [labelText, setLabelText] = useState("New monthly budget");
   const moneyActivityList = useSelector(state => state.moneyActivityList);
+  const inputRef = useRef<HTMLInputElement>(null);
   // Get the current logged in user`s uid
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId);
+  var isDiffGreen = false;
   
   // Function to get the current user`s budget / is getting fetched from the firebase database
   async function fetchUserBaseBudget(callback) {
@@ -22,7 +24,7 @@ function Budget() {
       const userObj = snapshot.val();
       baseBudget(userObj.baseBudget);
     })})
-    
+
     var promiseResult =  await getBaseBudget;
     setBudget(promiseResult);
 
@@ -83,7 +85,18 @@ function Budget() {
 
   function checkDifference() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
-      return "- " + (budget - calcCurrBudget());
+      const currBudget = calcCurrBudget();
+      if (currBudget > budget) {
+        isDiffGreen = true;        
+        return "+ " + (currBudget - budget);
+      } else { if (budget > currBudget) {
+        isDiffGreen = false; 
+        return "- " + (budget + currBudget);
+        } else {
+          isDiffGreen = true;   
+          return 0;
+        } 
+      } 
     } else {
       return inputBudget;
     }
@@ -104,7 +117,7 @@ function Budget() {
           <button type="submit" className="save-budget">Save</button>
           <span className="budget-label">{labelText}</span>
           <div className="diff-container">
-            <input value={checkDifference()} className='budget-diff'></input>
+            <input value={checkDifference()} className={`budget-diff ${isDiffGreen ? "diff-green" : "diff-red"}`}></input>
             <span className="budget-label">Difference of base budget</span>
           </div>
         </form>
