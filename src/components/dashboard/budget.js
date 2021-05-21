@@ -91,7 +91,7 @@ function Budget() {
         return "+ " + (currBudget - budget);
       } else { if (budget > currBudget) {
         isDiffGreen = false; 
-        return "- " + (budget + currBudget);
+        return "- " + (budget - currBudget);
         } else {
           isDiffGreen = true;   
           return 0;
