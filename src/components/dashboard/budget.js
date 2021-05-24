@@ -16,6 +16,8 @@ function Budget() {
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId);
   var isDiffGreen = false;
+  var edit = false;
+  const [isEdit, setIsEdit] = useState(false);
   
   // Function to get the current user`s budget / is getting fetched from the firebase database
   async function fetchUserBaseBudget(callback) {
@@ -32,7 +34,9 @@ function Budget() {
   }
   // Function will invoke at component render
   useEffect(() => {
-    fetchUserBaseBudget(checkEmptyBudget);
+    if(!isEdit) {
+      fetchUserBaseBudget(checkEmptyBudget);
+    }
   });
 
   function calcCurrBudget() {
@@ -52,34 +56,46 @@ function Budget() {
 
   // Function to get value from budget input and push it as /user/budget entry to the firebase database
   function addBudget() {
-    inputBudget = parseFloat(inputBudget);
+    console.log(budget)
+    setIsEdit(false);
+  
     // Check if input number is a number
-    if(isNaN(inputBudget)) {
+    if(isNaN(budget)) {
       alert("input is not a number");
       return;
     } else {
-      db.ref("users/" + userId).set({
-        baseBudget: parseFloat(inputBudget)
+      console.log("UPDATE")
+      console.log(budget)
+      db.ref("users/" + userId).update({
+        baseBudget: parseFloat(budget)
       });
     }
   }
 
   // Checks on render if the budget from firebase is empty and sets the label of the input accordingly
   function checkEmptyBudget() {
-    if (budget !== 0 && budget !== "" && budget !== undefined) {
-      setLabelText("Current Budget");
-      setSave(true);
-    } else {
-      return false;
+    if(!isEdit) {
+      if (budget !== 0 && budget !== "" && budget !== undefined) {
+        setLabelText("Current Budget");
+        setSave(true);
+      } else {
+        return false;
+      }
     }
   }
 
   // Checks budget value and sets it if not empty as current budget input value
   function checkValue() {
-    if (budget !== 0 && budget !== "" && budget !== undefined) {
-      return calcCurrBudget().toFixed(2) + " €";
+    if(isEdit) {
+      console.log("CHECK");
+      return;
     } else {
-      return inputBudget;
+      console.log("BLABLA");
+        if (budget !== 0 && budget !== "" && budget !== undefined) {
+        return calcCurrBudget().toFixed(2) + " €";
+      } else {
+        return budget;
+      }
     }
   }
 
@@ -98,7 +114,7 @@ function Budget() {
         } 
       } 
     } else {
-      return inputBudget;
+      return budget;
     }
   }
 
@@ -109,11 +125,19 @@ function Budget() {
     addBudget();
   }
 
+  function editBudget() {
+    setBudget();
+    setIsEdit(true);
+    setSave(false);
+    console.log("EDIT");
+  }
+
   // Main jsx component rendering
    return (
      <div className="budget-container">
+     
         <form className={`budget-form floating-inputs ${isSaved ? "saved" : "not-saved"}`} onSubmit={handleSave.bind(this)}>
-          <input name="budget" type="text" className="budget" value={checkValue()} onBlur={({target: {value}}) => setInputBudget(value)} required/>
+          <input name="budget" type="text" className="budget" value={checkValue()} onBlur={({target: {value}}) => setBudget(value)} required/>
           <button type="submit" className="save-budget">Save</button>
           <span className="budget-label">{labelText}</span>
           <div className="diff-container">
@@ -121,6 +145,7 @@ function Budget() {
             <span className="budget-label">Difference of base budget</span>
           </div>
         </form>
+        <button onClick={() => editBudget()}>EDIT</button>
      </div>
     );
   }
