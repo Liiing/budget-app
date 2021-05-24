@@ -1,21 +1,107 @@
 @import './variables';
 @import './fonts';
 
-.error-box{
-    background-color: $white;
-    position: relative;
-    text-align: center;
-    color: $primary-color;
-    margin-top: 25px;
-    padding: 10px;
-    border-radius: 10px;
+.fiels-missing-box{
+  background-color: #f1e5bc;
+  position: relative;
+  color: $primary-color;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: initial;
 
-    h3,p{
-        color: rgb(255,0,0);
-    }
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
 
-    p {
-        margin-top: 15px;
-        margin-bottom: 10px;
-    }
+  h3,p{
+      color: rgb(153, 115, 33);
+  }
+
+  p {
+      margin-top: 15px;
+  }
+}
+
+.password-weak-box{
+  background-color: #ffab7b;
+  position: relative;
+  color: $primary-color;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: initial;
+
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
+
+  h3,p{
+      color: rgb(153, 67, 33);
+  }
+
+  p {
+      margin-top: 15px;
+  }
+}
+
+.email-already-exists-box{
+  background-color: #ffab7b;
+  position: relative;
+  color: $primary-color;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: initial;
+
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
+
+  h3,p{
+      color: rgb(153, 67, 33);
+  }
+
+  p {
+      margin-top: 15px;
+  }
+}
+
+.wrong-password-box{
+  background-color: #ffab7b;
+  position: relative;
+  color: $primary-color;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: initial;
+
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
+
+  h3,p{
+      color: rgb(153, 67, 33);
+  }
+
+  p {
+      margin-top: 15px;
+  }
+}
+
+.invalid-email-box{
+  background-color: #ffab7b;
+  position: relative;
+  color: $primary-color;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: initial;
+
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
+
+  h3,p{
+      color: rgb(153, 67, 33);
+  }
+
+  p {
+      margin-top: 15px;
+  }
 }

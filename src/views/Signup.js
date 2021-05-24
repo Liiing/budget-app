@@ -105,7 +105,7 @@ const Signup = () => {
             </div>
             <AuthenticationInput type="confirm" form="signup-form" label="confirm password" onChange={({target: {value}}) => setPasswordConfirmation(value)}/>
 
-            {error && <ErrorBox errorCode={error}/>}
+            {error && <ErrorBox errorCode={error} styling={error}/>}
             {showEmailVerificationBox && <VerifyEmailInfoBox/>}
 
             <input className="signup-button" type="submit" value="Sign Up" disabled={loading}/>

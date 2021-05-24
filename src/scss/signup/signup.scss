@@ -95,9 +95,9 @@
     position: relative;
     display: block;
     margin: 0 auto;
-    max-width: 350px;
+    max-width: 340px;
     text-align: center;
-    margin-top: 300px;
+    margin-top: 330px;
 
     @media ($down: $xl) {
       margin-top: 180px;
@@ -149,7 +149,7 @@
       }
 
       .input-box{  
-        margin-top: 90px;
+        margin-top: 80px;
         &:first-of-type{
           margin-top: 0;
         }
@@ -171,7 +171,7 @@
         height: 45px;
         border-radius: 5px;
         font-size: 1.2rem;
-        margin-top: 55px;
+        margin-top: 80px;
         margin-bottom: 35px;
         transition: 0.3s ease;
         cursor: pointer;
