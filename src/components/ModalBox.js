@@ -1,5 +1,6 @@
 import '../scss/modalbox.scss';
 
+// basic modalbox blueprint for creating individual modalboxes
 function ModalBox({children, onClose}) {
 	 
   return (

@@ -1,5 +1,6 @@
 import '../scss/authenticationInput.scss';
 
+// creates input (text & password) field used on authentication pages
 const AuthenticationInput = ({type, form, onChange, label, style, onFocus, onBlur}) => {
 	return (
 		<div className="input-box" style={style}>

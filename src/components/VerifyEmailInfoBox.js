@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { useAuth } from '../AuthContext';
 import '../scss/verifyEmailInfoBox.scss'
 
-function VerifyEmailInfoBox({onLogin = false, resendVerificationEmail}) {
-	
+// info-box reminding user to verify email and offering them to resend verification mail
+function VerifyEmailInfoBox({onLogin = false, resendVerificationEmail}) {	
+	// creating state for component
 	const [emailSend, setEmailSend] = useState(false)
 
+	// render component
 	return (
 		<div className="email-verification-info-box">
 			<h3>Verify Email</h3>

@@ -9,16 +9,20 @@ import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import { db } from '../firebase/firebase';
 import ErrorBox from '../components/ErrorBox';
 
+// signup react-component
 const Signup = () => {
+  // creates states for singup component
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [loading, setLoading] = useState(false)
-  const { signup, logout } = useAuth()
   const [passwordRulesView, setView] = useState(false)
   const [showEmailVerificationBox, setShowEmailVerificationBox] = useState(false)
   const [error, setError] = useState("")
+  // accessing signup and login methods from AuthContext
+  const { signup, logout } = useAuth()
 
+  // creates database entry for newly registered user (if it doesn't already exist)
   async function createDatabaseEntry(uid){
     var doesNotExist = true;
     var userRef = db.ref('users/' + uid).on('value', snapshot => {
@@ -36,6 +40,7 @@ const Signup = () => {
     }
   }
 
+  // checks if all fields needed for signup are filled
   function checkIfAllFieldsAreFilled(){
     if(!email){
       setError("auth/missing-email")
@@ -50,6 +55,8 @@ const Signup = () => {
     return true;
   }
 
+  // checks if fields are valid, signs up user and shows the email-verification info-box
+  // if fields aren't valid or signup fails the error-box is shown
   async function handleSubmit(event) {
     event.preventDefault()
     setError("")
@@ -80,6 +87,7 @@ const Signup = () => {
     }
   }
 
+  // render signup component
   return (
     <div className="wrapper">
       <div className="logo-container">

@@ -8,7 +8,9 @@ import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
 import ModalBox from '../components/ModalBox';
 import ErrorBox from '../components/ErrorBox';
 
+// login react-component
 export function Login() {
+  // creates states for login-component
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [loading, setLoading] = useState(false)
@@ -16,9 +18,15 @@ export function Login() {
   const [showPasswordResetModal, setShowPasswordResetModal] = useState(false)
   const [error, setError] = useState("")
   const [canBeRedirected, setCanBeRedirected] = useState(false)
+  // accessing useHistory-hook 
   const history = useHistory()
+  // accessing login and logout methods from AuthContext
   const { login, logout } = useAuth()
 
+  // log user in and then...
+  // ..redirecting them to dashboard if successful and email verified
+  // ..show VerifyEmailInfoBox if user is successfully logged in but hasn't verified their email address
+  // ..show error-box if login isn't successful
   async function handleSubmit(event) {
     event.preventDefault()
     setLoading(true)
@@ -46,6 +54,7 @@ export function Login() {
     setLoading(false)
   }
 
+  // logs user in, resends verification-email, logs them out
   async function resendVerificationEmail(setEmailSend) {
 		try {
       await login(email,password)
@@ -59,6 +68,7 @@ export function Login() {
 		} catch {setError("auth/unknown-error")}
 	}
 
+  // render login component
   return (
     <div className="wrapper">
       <div className="logo-container">
@@ -86,32 +96,30 @@ export function Login() {
           </form>
         </div>
       </div>
-
       {showPasswordResetModal && <ResetPasswordModal onClose={() => {setShowPasswordResetModal(false)}}/>}
     </div>
   );
 }
 
+// reset-password modal react component
 function ResetPasswordModal({onClose}){
+  // creates states for component
   const [emailForNewPassword,setEmailForNewPassword] = useState()
   const [resetEmailWasSent, setResetEmailWasSent] = useState(false)
+  // accessing resetPassword method from AuthContext
   const { resetPassword } = useAuth()
 
+  // sends email for password-reset to users email address
   async function handleResetSubmit(){
-     
-
     try {
-       
       await resetPassword(emailForNewPassword)
-       
       setResetEmailWasSent(true)
-       
     } catch {
       alert("Something went wrong...")
     }
-
   }
 
+  // render reset-password modalbox using ModalBox component
   return (
     <ModalBox onClose={onClose}>
       <h2>Reset Password</h2>

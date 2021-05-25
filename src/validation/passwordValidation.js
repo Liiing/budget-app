@@ -3,6 +3,7 @@ const passwordMinOneSpecialCharacter = new RegExp('[!@#$%^&*(),.?":{}|<>\-_\'/\\
 const passwordMinOneCapitalizedLetter = new RegExp('[A-ZÄÜÖ]');
 const passwordMinOneNumber = new RegExp('[0-9]');
 
+// validates password requirements using RegExp 
 const validatePassword = (password, passwordConfirmation) => {
   if(password !== passwordConfirmation){ 
     return false
