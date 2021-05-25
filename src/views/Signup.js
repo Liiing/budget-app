@@ -24,20 +24,17 @@ const Signup = () => {
 
   // creates database entry for newly registered user (if it doesn't already exist)
   async function createDatabaseEntry(uid){
-    var doesNotExist = true;
-    var userRef = db.ref('users/' + uid).on('value', snapshot => {
-      doesNotExist = !snapshot.exists()
+    db.ref('users/' + uid).set({
+      baseBudget : 0,
+      budget : 0,
+      expenses : {},
+      goals: {},
+      History: {}
+    }).then(()=> {
+      logout()
+    }).catch((error) => {
+      alert(error)
     })
-    
-    if(doesNotExist){
-      db.ref('users/' + uid).set({
-        baseBudget : 0,
-        budget : 0,
-        expenses : {},
-        goals: {},
-        History: {}
-      })
-    }
   }
 
   // checks if all fields needed for signup are filled
@@ -78,7 +75,6 @@ const Signup = () => {
         .then((userCredential) => {
           userCredential.user.sendEmailVerification()
           createDatabaseEntry(userCredential.user.uid)
-          logout()
           setShowEmailVerificationBox(true)
         })
         .catch(error => setError(error.code))
