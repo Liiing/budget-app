@@ -31,7 +31,12 @@ function ErrorBox({errorCode, styling}) {
 		case "auth/password-insufficient":
 			errorTitle = "Password doesn't meet requirements"
 			errorMessage = "Your password doesn't meet the minimum requirements."
-      		styling = "password-weak-box"
+				styling = "password-weak-box"
+			break;
+		case "auth/too-many-attempts":
+			errorTitle = "Too many attempts"
+			errorMessage = "Please wait before trying to resend the verification mail"
+				styling = "too-many-attempts-box"
 			break;
 		default:
 			errorTitle = "Error!"

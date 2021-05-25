@@ -105,3 +105,24 @@
       margin-top: 15px;
   }
 }
+
+.too-many-attempts-box{
+  background-color: #ffab7b;
+  position: relative;
+  color: $primary-color;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: initial;
+
+  -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+  box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
+
+  h3,p{
+      color: rgb(153, 67, 33);
+  }
+
+  p {
+      margin-top: 15px;
+  }
+}

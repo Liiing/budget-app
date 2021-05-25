@@ -60,8 +60,14 @@ export function Login() {
       await login(email,password)
       .then((userCredential) => {
           userCredential.user.sendEmailVerification()
-          setEmailSend(true)
-          logout()
+          .then(() => {
+            setEmailSend(true)
+            logout()
+          })
+          .catch(() => {
+            setError("auth/too-many-attempts")
+            logout()
+          })
         }
       )
       .catch((error) => {setError(error.code)})
@@ -88,7 +94,7 @@ export function Login() {
               </p>
             </div>
             {error && <ErrorBox errorCode={error}/>}
-            {showEmailVerificationBox && <VerifyEmailInfoBox resendVerificationEmail={resendVerificationEmail} onLogin/>}
+            {showEmailVerificationBox && !error && <VerifyEmailInfoBox resendVerificationEmail={resendVerificationEmail} onLogin/>}
             <input className="login-button" type="submit" value="Login" disabled={loading}/>
             <div className="sign-up-container">
               <Link to="/signup">SIGN UP</Link>
