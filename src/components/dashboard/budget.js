@@ -2,7 +2,7 @@ import '../../scss/dashboard/budget.scss';
 import { useState, useEffect, useRef } from 'react';
 import { db } from '../../firebase/firebase';
 import { auth } from '../../firebase/firebase';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Budget() {
   // Create state variables: budget,isSaved,labelText,isEdit
@@ -11,6 +11,7 @@ function Budget() {
   const [isEdit, setIsEdit] = useState(false);
   const [isSaved, setSave] = useState(false);
   const [labelText, setLabelText] = useState("New monthly budget");
+  const dispatch = useDispatch();
 
   //Get Current State from ExpenseList
   const moneyActivityList = useSelector(state => state.moneyActivityList);
@@ -30,7 +31,10 @@ function Budget() {
     })})
 
     var promiseResult =  await getBaseBudget;
+
+    dispatch({type: 'baseBudget/setBaseBudget', baseBudget:  promiseResult});
     setBudget(promiseResult);
+
 
     callback();
   }

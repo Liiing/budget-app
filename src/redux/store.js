@@ -7,6 +7,8 @@ const loggerMiddleware = createLogger();
 // Define our main redux states and save it to store
 const initialState = {
   moneyActivityList: [],
+  goalList: [],
+  baseBudget: 0.0,
 };
 
 // Create the store
@@ -26,7 +28,13 @@ function rootReducer(state = initialState, action) {
     case 'moneyEntry/deleteEntry':
         return onDeleteMoneyEntry(state, action.id);
     case 'moneyActitivtyList/updateList':
+      console.log('LIST')
         return onDashBoardLoad(state, action.list);
+    case 'goalList/updateList':
+        return onSavingsLoad(state, action.list);
+    case 'baseBudget/setBaseBudget':
+        console.log('SET BUDGET')
+        return setBaseBudget(state, action.baseBudget);
     default:
         console.warn('Action not found.', action);
         return state;
@@ -63,6 +71,24 @@ function onDeleteMoneyEntry(state, entryId) {
 
     return state;
 }
+
+// Function to copy and return current savings list
+function onSavingsLoad(state, list) {
+  var copiedGoalList = [...state.goalList];
+ 
+  copiedGoalList = list;
+   state.goalList = copiedGoalList;
+ 
+   return state;
+ }
+
+ function setBaseBudget(state, baseBudget) {
+
+   return {
+     ...state,
+     baseBudget: baseBudget
+   }
+ }
 
 function findEntryIndexById(state, entryId) {
   return state.moneyActivityList.findIndex(entry => entry.id === entryId);

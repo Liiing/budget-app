@@ -1,0 +1,131 @@
+@import '../variables';
+
+
+
+.new-goal-button {
+  border: solid 1px white;
+  border-radius: 20px;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.new-goal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+
+  .new-goal-container {
+    width: 450px;
+    padding: 35px;
+    background-color: $secondary-color;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 0.3s ease ;
+
+    .window-title {
+      color: $white;
+      font-weight: 400;
+    }
+
+    .close {
+      position: absolute;
+      right: 35px;
+      color: $white;
+      font-size: 1rem;
+      border: none;
+      background-color: transparent;
+    }
+
+    .text-input-box {
+      position: relative;
+      display: block;
+
+      div {
+        padding-top: 50px;    
+        position: relative;
+
+        input {
+          position: relative;
+          display: block;
+          border: none;
+          border-bottom: 1px solid #e4e4e4;
+          outline: none;
+          background: transparent;
+          color: $white;
+          outline: none;;
+          font-size: 1rem;
+          font-weight: 100;
+          width: 100%;    
+        }
+
+        input:focus ~ .floating-label,
+        input:not(:focus):valid ~ .floating-label{
+          bottom: 25px;
+          left: 0px;
+          font-size: 0.8rem;
+          opacity: 1;
+        }  
+          
+        .floating-label {
+          position: absolute;
+          pointer-events: none;
+          left: 5px;
+          bottom: 0px;
+          color: #a3b2c7;
+          font-size: 1rem;
+          transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
+        } 
+      }
+    }
+
+    .save-container {
+      text-align: center;
+
+      .save {
+        border: none;
+        background-color: $primary-color;
+        color: $white;
+        width: 100px;
+        height: 35px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        margin-top: 35px;
+        margin-bottom: 15px;
+        transition: 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: lighten(rgba(255, 255, 255, 0.695), 40px);
+          color: $white;
+          box-shadow: inset 0px 0px 0px 2px $black;
+        }
+      }
+    }
+  }
+}
+
+.showNewGoalWindow {
+  @keyframes popup {
+    from {transform: scale(0.5);}
+    to {transform: scale(1);}
+  }
+  visibility: visible;
+  pointer-events: all;
+
+  .new-goal-container {
+    animation: popup 0.2s ease;
+  }
+}
+
+.hideNewGoalWindow {
+  visibility: hidden;
+  pointer-events: none;
+}
+

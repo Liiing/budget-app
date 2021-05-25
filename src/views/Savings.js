@@ -4,6 +4,9 @@ import Logo from '../components/logo.js';
 import Settings from '../components/dashboard/settings.js';
 import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
+import NewGoal from '../components/dashboard/new-goal';
+import Goals from '../components/dashboard/goals';
+
 
 function Savings() {
 	const [isActive, setActive] = useState("false");
@@ -30,6 +33,8 @@ function Savings() {
 		</div>
 		<div className="main-section">
 		  <Logo />
+      <NewGoal />
+      <Goals />
 		</div>
 	</div>
   );
