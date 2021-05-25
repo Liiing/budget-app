@@ -1,7 +1,3 @@
-import Parent, { Form } from '../';
-import React, { useContext, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
 import Budget from '../components/dashboard/budget.js';
 import fetchUserBudget from '../components/dashboard/budget.js';
 import checkEmptyBudget from '../components/dashboard/budget.js';

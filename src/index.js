@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import UnauthenticatedRoute from './UnauthenticatedRoute';
 import {Provider} from 'react-redux';
 import store from './redux/store.js';
+// Main Imports of all files/views
 
 import {
   BrowserRouter as Router,
@@ -24,6 +25,7 @@ document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 const rootElement = document.getElementById('root') || document.createElement('div') ;
 
+// Main render function for all sites/views
 ReactDOM.render(
 	<Router basename="/budget-app">
 		<AuthProvider> 

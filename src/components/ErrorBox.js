@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
 import '../scss/errorBox.scss'
 
 function ErrorBox({errorCode, styling}) {
 
 	var errorMessage;
 	var errorTitle;
-  var styling;
+  	var styling;
 
 	switch(errorCode){
 		case "auth/invalid-email":
@@ -41,13 +40,11 @@ function ErrorBox({errorCode, styling}) {
 
 	return (
 		<div className={styling}>
-      <div className="error-icon">
-
-      </div>
-      <div className="error-text">
-        {errorTitle && <h3>{errorTitle}</h3>}
-			  {errorMessage && <p>{errorMessage}</p>}
-      </div>
+			<div className="error-icon"></div>
+			<div className="error-text">
+				{errorTitle && <h3>{errorTitle}</h3>}
+				{errorMessage && <p>{errorMessage}</p>}
+			</div>
 		</div>
 		);
 	}

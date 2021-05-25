@@ -1,8 +1,8 @@
 import logo from '../asset/images/piggy-bank-euro.svg';
 import '../scss/logo.scss';
 
+// Render logo in components
 function Logo() {
-	 
   return (
     <div className="logo-box">
 	  <div className="logo-img-box">

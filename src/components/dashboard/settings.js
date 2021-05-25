@@ -1,7 +1,8 @@
 import '../../scss/dashboard/settings.scss';
-import Logout from '../../components/Logout.js';
-import { useState, useEffect } from 'react';
+import Logout from './Logout.js';
+import { useState } from 'react';
 
+// Simple settings function so set a class on active state
 function Settings() {
   const [open,setOpen] = useState(false);
 

@@ -1,12 +1,11 @@
-import '../scss/signup/signup.scss';
+import '../scss/signup.scss';
 import Logo from '../components/logo';
 import React, {useState} from 'react';
 import validatePassword from '../validation/passwordValidation';
 import AuthenticationInput from '../components/AuthenticationInput';
-import {Link, useHistory} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import VerifyEmailInfoBox from '../components/VerifyEmailInfoBox';
-import { getElementError } from '@testing-library/dom';
 import { db } from '../firebase/firebase';
 import ErrorBox from '../components/ErrorBox';
 
@@ -86,7 +85,6 @@ const Signup = () => {
       <div className="logo-container">
         <Logo />
       </div>
-
       <div className="signup-container">
         <Logo />
         <div className="form-box">

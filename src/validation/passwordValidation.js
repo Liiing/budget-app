@@ -1,4 +1,3 @@
-
 const passwordMinEigthCharacters = new RegExp('^(.){8,}$');
 const passwordMinOneSpecialCharacter = new RegExp('[!@#$%^&*(),.?":{}|<>\-_\'/\\=§;`´+~]','g');
 const passwordMinOneCapitalizedLetter = new RegExp('[A-ZÄÜÖ]');

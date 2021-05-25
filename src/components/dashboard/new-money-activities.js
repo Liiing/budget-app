@@ -1,18 +1,21 @@
-import '../scss/new-money-activity.scss';
+import '../../scss/dashboard/new-money-activity.scss';
 import React, {useState} from 'react';
-import { db } from '../../src/firebase/firebase';
-import { auth } from '../../src/firebase/firebase';
+import { db, auth } from '../../firebase/firebase';
 
-function NewMoneyActivity (){
+// Main functional component
+function NewMoneyActivity () {
   
+  // Define constant useState variables // useState re renders component and can be used to handle global state
   const [labelText, setLabelText] = useState("");
   const [newMoneyActivityWindow, setView] = useState(false);
   const [isChecked, setChecked] = useState(false);
-  const [amount, setAmount] = useState("")
+  const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [typeState, setType] = useState("");
+
   const userId = auth.currentUser.uid; 
   
+  // Create new Date object and return full Date
   var date = new Date();
   var dd = String(date.getDate()).padStart(2, '0');
   var mm = String(date.getMonth() + 1).padStart(2, '0');
@@ -25,14 +28,17 @@ function NewMoneyActivity (){
 
   var dateId = dd + mm + yyyy + hh + min + ss + ms;
   var currMonthandYear = mm + yyyy;
+
+  // Path to database save to constant variable
   const dbRef = db.ref("users/" + userId + "/expenses/" + currMonthandYear + "/" + dateId);
   
   const handleView = (labelTextPara, type) => {
-    setType(type)
-    setLabelText(labelTextPara)
-    setView(true)
+    setType(type);
+    setLabelText(labelTextPara);
+    setView(true);
   };
 
+  //create new activity entry in database
   const writeNewMoneyActivity = () => {
     dbRef.set({
       type: typeState,
@@ -42,9 +48,11 @@ function NewMoneyActivity (){
       date: date,
       id: dateId
     });
-    setView(false)
+
+    setView(false);
   }
 
+  // Main jsx render // HTML Structure
   return (
     <div className="button-and-new-money-activity-container">
       <div className="new-credit-entry">
@@ -62,18 +70,15 @@ function NewMoneyActivity (){
               <input type="text" className="money" onChange={({target: {value}}) => setAmount(value)} required/>
               <span className="floating-label">amount</span>
             </div>
-
             <div>
               <input type="text" className="description" onChange={({target: {value}}) => setDescription(value)} required/>
               <span className="floating-label">description</span>
             </div>
           </div>
-
           <input defaultChecked={isChecked} onChange={() => setChecked(!isChecked)} type="checkbox" className="checkbox"/>
           <label htmlFor="checkbox">
             {labelText}
           </label>
-
           <div className="save-container">
             <button onClick={() => writeNewMoneyActivity()} className="save">Save</button>
           </div> 
@@ -82,5 +87,5 @@ function NewMoneyActivity (){
     </div>
   );
 }
-  
-  export default NewMoneyActivity;
+
+export default NewMoneyActivity;

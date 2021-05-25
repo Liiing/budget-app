@@ -5,21 +5,23 @@ import { auth } from '../../firebase/firebase';
 import { useSelector } from 'react-redux';
 
 function Budget() {
-  // Create state variable: budget and saved
+  // Create state variables: budget,isSaved,labelText,isEdit
   var [budget,setBudget] = useState();
-  var [inputBudget, setInputBudget] = useState();
+  var isDiffGreen = false;
+  const [isEdit, setIsEdit] = useState(false);
   const [isSaved, setSave] = useState(false);
   const [labelText, setLabelText] = useState("New monthly budget");
+
+  //Get Current State from ExpenseList
   const moneyActivityList = useSelector(state => state.moneyActivityList);
   const inputRef = useRef<HTMLInputElement>(null);
+
   // Get the current logged in user`s uid
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId);
-  var isDiffGreen = false;
-  var edit = false;
-  const [isEdit, setIsEdit] = useState(false);
   
-  // Function to get the current user`s budget / is getting fetched from the firebase database
+  // Function to get the current user`s budget / fetch from the firebase database
+  // Promises a return value to wait for database fetch
   async function fetchUserBaseBudget(callback) {
     const getBaseBudget = new Promise((baseBudget) => {
       dbRef.on('value', (snapshot) => {
@@ -32,13 +34,15 @@ function Budget() {
 
     callback();
   }
-  // Function will invoke at component render
+
+  // UseEffect Hook will invoke at component render
   useEffect(() => {
     if(!isEdit) {
       fetchUserBaseBudget(checkEmptyBudget);
     }
   });
 
+  // Function to get each expense and calculate the current budget
   function calcCurrBudget() {
     var allExpenses = 0;
     var allCredits = 0;
@@ -56,16 +60,14 @@ function Budget() {
 
   // Function to get value from budget input and push it as /user/budget entry to the firebase database
   function addBudget() {
-    console.log(budget)
     setIsEdit(false);
   
     // Check if input number is a number
     if(isNaN(budget)) {
       alert("input is not a number");
-      return;
+      return false;
     } else {
-      console.log("UPDATE")
-      console.log(budget)
+      // Update new Budget value in database
       db.ref("users/" + userId).update({
         baseBudget: parseFloat(budget)
       });
@@ -87,10 +89,8 @@ function Budget() {
   // Checks budget value and sets it if not empty as current budget input value
   function checkValue() {
     if(isEdit) {
-      console.log("CHECK");
       return;
     } else {
-      console.log("BLABLA");
         if (budget !== 0 && budget !== "" && budget !== undefined) {
         return calcCurrBudget().toFixed(2) + " €";
       } else {
@@ -99,6 +99,7 @@ function Budget() {
     }
   }
 
+  // Function to check for current baseBudget difference, calculate difference and set it
   function checkDifference() {
     if (budget !== 0 && budget !== "" && budget !== undefined) {
       const currBudget = calcCurrBudget();
@@ -125,17 +126,17 @@ function Budget() {
     addBudget();
   }
 
+  // Edit budget per click
   function editBudget() {
     setBudget();
     setIsEdit(true);
     setSave(false);
-    console.log("EDIT");
+     
   }
 
-  // Main jsx component rendering
+  // Main jsx component rendering // Html Structure
    return (
      <div className="budget-container">
-     
         <form className={`budget-form floating-inputs ${isSaved ? "saved" : "not-saved"}`} onSubmit={handleSave.bind(this)}>
           <input name="budget" type="text" className="budget" value={checkValue()} onBlur={({target: {value}}) => setBudget(value)} required/>
           <button type="submit" className="save-budget">Save</button>
@@ -150,4 +151,5 @@ function Budget() {
     );
   }
   
-  export default Budget; 
+// Export budget function to use in other components
+export default Budget; 

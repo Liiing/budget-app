@@ -3,6 +3,7 @@ import "firebase/auth"
 import "firebase/database"
 import "firebase/analytics"
 
+// Firebase configuration to work in other components
 var firebaseConfig = {
 	apiKey: "AIzaSyDFfBHJPnormfyFlRSbdM360FsUWgbKt3Y",
 	authDomain: "btary-app.firebaseapp.com",

@@ -1,4 +1,4 @@
-import '../scss/login/login.scss';
+import '../scss/login.scss';
 import Logo from '../components/logo.js';
 import AuthenticationInput from '../components/AuthenticationInput';
 import { useState } from 'react';
@@ -9,7 +9,6 @@ import ModalBox from '../components/ModalBox';
 import ErrorBox from '../components/ErrorBox';
 
 export function Login() {
-   
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [loading, setLoading] = useState(false)
@@ -99,14 +98,14 @@ function ResetPasswordModal({onClose}){
   const { resetPassword } = useAuth()
 
   async function handleResetSubmit(){
-    console.log("Trying to reset password...")
+     
 
     try {
-      console.log("starting...")
+       
       await resetPassword(emailForNewPassword)
-      console.log("finished...")
+       
       setResetEmailWasSent(true)
-      console.log("changed text...")
+       
     } catch {
       alert("Something went wrong...")
     }

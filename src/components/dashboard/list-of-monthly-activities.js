@@ -1,51 +1,59 @@
 import '../../scss/dashboard/list-of-monthly-activities.scss';
-import { db } from '../../firebase/firebase';
-import { auth } from '../../firebase/firebase';
-import React, {useState} from 'react';
-import { useEffect } from 'react';
+import { db, auth } from '../../firebase/firebase';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+// Main component function / Functional component
 function ListOfMonthlyActivities() {
-  
+  // Create date function and save current date values in variables
   var date = new Date();
-  var mm = String(date.getMonth() + 1).padStart(2, '0')
+  var mm = String(date.getMonth() + 1).padStart(2, '0');
   var yyyy = date.getFullYear();
   var currMonthandYear = mm + yyyy;
+  
+  // Save userID from auth to variable / get database path
   const userId = auth.currentUser.uid; 
   const dbRef = db.ref("users/" + userId + "/expenses/" + currMonthandYear);
-  
   const dispatch = useDispatch();
+  
+  // Get Expense list as variable
   const moneyActivityList = useSelector(state => state.moneyActivityList); 
   const [isListEmpty, setListEmpty] = useState(false);
+  const [render, reRender] = useState("");
 
+  // Function to get current activity from database and push objects to array
   function fetchUserMoneyActivityEntries(dispatch) {
-    var liist = [];
+    var  activityList = [];
+
     dbRef.on('value', (snapshot) => {
       const userObj = snapshot.val();
 
       if (userObj !== null && userObj !== "" && userObj !== 0) {
         Object.keys(userObj).forEach(function(prop) {
-            liist.push(userObj[prop]);
-            console.log(liist);
+          activityList.push(userObj[prop]);
+             
         });
-        dispatch({type: 'moneyActitivtyList/updateList', list: liist}); 
-        liist = [];
+        dispatch({type: 'moneyActitivtyList/updateList', list:  activityList}); 
+
+        activityList = [];
         setListEmpty(false);
+
       } else {
         setListEmpty(true);
       }
     });
   }
 
-  const [render, reRender] = useState("");
-
+  // On component render get list and re render component
   useEffect(() => {
     fetchUserMoneyActivityEntries(dispatch);
+    
     setTimeout(() => {
       reRender("Updated");
     }, 100);
   }, [dispatch]);
 
+  // Main jsx render // HTML Structure
   return (
     <div className="list-container">
       <div className="list-titles">
@@ -77,4 +85,5 @@ function ListOfMonthlyActivities() {
   </div>
   );
 }
-  export default ListOfMonthlyActivities; 
+
+export default ListOfMonthlyActivities; 

@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger';
 
+// Define logger handler
 const loggerMiddleware = createLogger();
 
+// Define our main redux states and save it to store
 const initialState = {
   moneyActivityList: [],
 };
 
+// Create the store
 const store = createStore(
     rootReducer,
     applyMiddleware(
@@ -15,6 +18,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+// Create reducer function which checks for changes in different states
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'moneyEntry/addEntry':
@@ -29,6 +33,7 @@ function rootReducer(state = initialState, action) {
   }
 }
 
+// Function to copy and return current activity list
 function onDashBoardLoad(state, list) {
  var copiedMoneyActivityList = [...state.moneyActivityList];
 
@@ -38,6 +43,7 @@ function onDashBoardLoad(state, list) {
   return state;
 }
 
+// Function to add a new activity entry to state
 function onAddMoneyEntry(state, entry) {
   var copiedMoneyActivityList = [...state.moneyActivityList];
 
@@ -47,6 +53,7 @@ function onAddMoneyEntry(state, entry) {
   return state;
 }
 
+// Function to delete activity list entries
 function onDeleteMoneyEntry(state, entryId) {
   var copiedMoneyActivityList = [...state.moneyActivityList];
   const deleteEntryIndex = findEntryIndexById(state, entryId);
@@ -56,7 +63,6 @@ function onDeleteMoneyEntry(state, entryId) {
 
     return state;
 }
-
 
 function findEntryIndexById(state, entryId) {
   return state.moneyActivityList.findIndex(entry => entry.id === entryId);

@@ -15,22 +15,21 @@ function Savings() {
   return (
 	<div className={`dashboard saving mobile-dash ${isActive ? "closed" : "active"}`}>
 		<div className={`sidebar mobile ${isActive ? "closed" : "active"}`}>
-         <div className="container">
-            <div className="menu-burger" onClick={handleToggle}>
-               <span></span>
-               <span></span>
-               <span></span>
-            </div>
-            <div className="dashboard-views">
+        <div className="container">
+          <div className="menu-burger" onClick={handleToggle}>
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+          <div className="dashboard-views">
             <NavLink activeClassName="active" to="/dashboard">D</NavLink>
-				<NavLink activeClassName="active" to="/savings">S</NavLink>
-				</div>
-            <Settings />
+            <NavLink activeClassName="active" to="/savings">S</NavLink>
+          </div>
+          <Settings />
          </div>
 		</div>
 		<div className="main-section">
-		<Logo />
-		
+		  <Logo />
 		</div>
 	</div>
   );
