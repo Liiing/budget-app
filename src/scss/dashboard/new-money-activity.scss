@@ -84,10 +84,10 @@
             position: absolute;
             pointer-events: none;
             left: 5px;
-            bottom: 0px;
+            bottom: 3px;
             color: #a3b2c7;
             font-size: 1rem;
-            transition: top 150ms ease, left 150ms ease, font-size 150ms ease;
+            transition: bottom 0.2s ease, left 0.2s ease, font-size 0.2s ease;
           } 
         }
       }
@@ -119,9 +119,9 @@
           cursor: pointer;
   
           &:hover {
-            background-color: lighten(rgba(255, 255, 255, 0.695), 40px);
+            background-color: lighten(rgba(22, 36, 75, 0.695), 40px);
             color: $white;
-            box-shadow: inset 0px 0px 0px 2px $black;
+            box-shadow: inset 0px 0px 0px 2px $white;
           }
         }
       }

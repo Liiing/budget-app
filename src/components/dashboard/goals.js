@@ -61,25 +61,30 @@ function Goals() {
       ) : (
         goalList.map((entry) => 
           <div key={entry.id} className="goal">
-            <div className="goal-body">
-              <h5 className="goal-card-titles">Goal Name</h5>
+            <div className="goal-body goal-name">
                {entry.goalName}
             </div>
-            <div className="goal-body">
-              <h5 className="goal-card-titles">Goal</h5>
-              {entry.goalAmount} €
-            </div>
-            <div className="goal-body">
-              <h5 className="goal-card-titles">Monthly goal</h5>
-              {entry.monthlyGoalAmount} €
-            </div>
-            <div className="goal-body">
-              <h5 className="goal-card-titles">Goal reached in</h5>
-              {calcGoalReachTime(entry.goalAmount, entry.monthlyGoalAmount)} month(s).
-            </div>
-            <div className="goal-body">
-              <h5 className="goal-card-titles">Set on</h5>
-              {entry.date}
+            <div className="flexContainer">
+              <div className="">
+                <div className="goal-body">
+                  <h5 className="goal-card-titles">Goal</h5>
+                  {entry.goalAmount} €
+                </div>
+                <div className="goal-body">
+                  <h5 className="goal-card-titles">Saving monthly</h5>
+                  {entry.monthlyGoalAmount} €
+                </div>
+              </div>
+              <div className="">
+                <div className="goal-body">
+                  <h5 className="goal-card-titles">Reached in</h5>
+                  {calcGoalReachTime(entry.goalAmount, entry.monthlyGoalAmount)} month(s).
+                </div>
+                <div className="goal-body">
+                  <h5 className="goal-card-titles">Set on</h5>
+                  {entry.date}
+                </div>
+              </div>
             </div>
           </div>)
         )

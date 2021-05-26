@@ -2,15 +2,34 @@
 
 .goals-wrapper {
   display: flex;
+  flex-wrap: wrap;
+
   .goal {
     background-color: white;
     border-radius: 10px;
-    color: blue;
-    padding: 10px;
+    color: $secondary-color;
+    padding: 20px;
     margin: 20px;
+    width: 280px;
+    -webkit-box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14); 
+    box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.14);
 
-    .goal-body {
-      margin-bottom: 10px;
+    .goal-name {
+      font-size: 1.8rem;
+      padding: 10px;
     }
+
+    .flexContainer {
+      display: flex;
+      .goal-body {
+        margin: 10px;
+      
+        
+        h5 {
+          margin-bottom: 5px;
+          color: rgb(84, 88, 100);
+        }
+      }
+    }   
   }
 }

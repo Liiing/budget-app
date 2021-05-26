@@ -160,78 +160,53 @@
 }
 
 .modal-box-content{
-  align-items: center;
-
   p,h2,label{
-    color: $primary-color;
-    text-align: center;
+    color: $secondary-color;
+  }
+
+  p {
+    padding-right: 30px;
   }
 
   .password-reset-box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
 
     .email-input {
+      margin-bottom: 10px;
       margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       position: relative;
-	    width: fit-content;
-
-      label {
-        align-self: flex-start;
-      }
+      
 
       input {
         display: block;
         border-radius: 3px;
-        border: 1px solid $primary-color;
+        border: 1px solid $secondary-color;
         padding: 5px 10px;
         outline: none;
         background: transparent;
         color: $secondary-color;
         font-size: 1.1rem;
         font-weight: 100;
-        min-width: 300px;
-        width: 100%;
-      }
-      
-      .material-icons{
-        color: $primary-color;
-        .user-icon{
-          background-color: red;
-          }
+        width: 80%;
       }
     }
 
     .button-container{
-      display: flex;
-      flex-direction: column;
-      width: fit-content;
-      align-items: center;
-
-      p{
-        margin-top: 20px;
-      }
-      
       button {
         border: none;
         background-color: $primary-color;
         color: $white;
-        min-width: 165px;
-        height: 45px;
+        min-width: 135px;
+        height: 40px;
         border-radius: 5px;
         margin-top: 20px;
-        font-size: 1.2rem;
+        font-size: 1rem;
         transition: 0.3s ease;
         cursor: pointer;
 
         &:hover {
           background-color: lighten($primary-color, 40%);
-          box-shadow: inset 0px 0px 0px 2px $black;
+          box-shadow: inset 0px 0px 0px 2px $white;
         }
       }
     }
