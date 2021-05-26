@@ -140,7 +140,8 @@ function Budget() {
 
   // Main jsx component rendering // Html Structure
    return (
-     <div className="budget-container">
+     <div className={`budget-container ${isSaved ? "saved" : "not-saved"}`}>
+     <button className="edit-budget" onClick={() => editBudget()}>Edit</button>
         <form className={`budget-form floating-inputs ${isSaved ? "saved" : "not-saved"}`} onSubmit={handleSave.bind(this)}>
           <input name="budget" type="text" className="budget" value={checkValue()} onBlur={({target: {value}}) => setBudget(value)} required/>
           <button type="submit" className="save-budget">Save</button>

@@ -2,6 +2,7 @@
 
 .budget-container {
   position: relative;
+
   .budget-form {
     width: 100%;
     height: 100%;
@@ -146,6 +147,24 @@
 
     .save-budget {
       display: none;
+    }
+  }
+
+  .edit-budget {
+    position: absolute;
+    top: -5px;
+    left: 150px;
+    padding: 5px 13px;
+    opacity: 1;
+    transition: 0.4s ease;
+    display: inline-block;
+    background-color: $primary-color;
+    color: $white;
+
+    &:hover {
+      color: $primary-color;
+      background-color: lighten($primary-color, 40px);
+      box-shadow: inset 0px 0px 0px 2px $grey;
     }
   }
 }
